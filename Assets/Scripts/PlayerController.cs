@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
 
     private GameObject _weapon;
     private GameObject _firePoint;
+    private Vector3 _firePointOffset;
 
     private bool _intendsToFire = false;
     private float _fireTimer = 0.0f;
@@ -44,6 +45,7 @@ public class PlayerController : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody2D>();
         _weapon = this.gameObject.FindChildWithName("Weapon");
         _firePoint = _weapon.FindChildWithName("FiringPoint");
+        _firePointOffset = _firePoint.transform.position;
     }
 
     #region PhysicsUpdates
@@ -55,7 +57,7 @@ public class PlayerController : MonoBehaviour
         Vector2 screenPos = Mouse.current.position.ReadValue();
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(new Vector3(screenPos.x, screenPos.y, this.transform.position.y));
         UpdateRotations(mousePos);
-        AttemptToFireWeapon(mousePos);
+        AttemptToFireWeapon();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -73,13 +75,16 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    void EvaluateSpread(Vector3 mousePos)
+    void EvaluateSpread()
     {
         // For each bullet in the spread:
         foreach (Transform child in spread.transform) {
-            var dir = mousePos - (_firePoint.transform.position + child.localPosition);
-            var rotation = Quaternion.LookRotation(Vector3.forward, dir);
-            var fired = Instantiate(bullet, _firePoint.transform.position, rotation);
+            // Get the offset of where the bullet should be based on rotation of the weapon.
+            // We only need the rotation of the weapon since it should be automatically pointing to the mouse at all times.
+            var newPos = Helper.RotateAroundPivot(child.localPosition, -_firePoint.transform.localPosition, _weapon.transform.eulerAngles);
+            var rotation = Quaternion.LookRotation(Vector3.forward, newPos);
+            // To avoid close collisions, we add the 
+            var fired = Instantiate(bullet, _firePoint.transform.position + newPos.normalized * 0.1f, rotation);
             Physics2D.IgnoreCollision(GetComponent<Collider2D>(), fired.GetComponent<Collider2D>(), true);
 
             var rb = fired.GetComponent<Rigidbody2D>();
@@ -89,16 +94,16 @@ public class PlayerController : MonoBehaviour
             //rb.velocity = _rigidbody.velocity;
             //rb.angularVelocity = _rigidbody.angularVelocity;
             // So it's not based on how far away the mouse is:
-            var unbiased = new Vector3(dir.x, dir.y);
+            var unbiased = new Vector3(newPos.x, newPos.y);
             rb.AddForce(unbiased.normalized * fireForce);
             _rigidbody.AddForce(-unbiased.normalized * recoil);
         }
     }
 
-    private void AttemptToFireWeapon(Vector3 mousePos) {
+    private void AttemptToFireWeapon() {
         if (_intendsToFire && _fireTimer <= 0.0f) {
             _fireTimer = fireDelay;
-            EvaluateSpread(mousePos);
+            EvaluateSpread();
             _intendsToFire = false;
         }
 

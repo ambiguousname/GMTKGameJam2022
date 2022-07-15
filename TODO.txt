@@ -2,3 +2,4 @@
 - Make recoil much more apparent (move the gun back first, then the player?)
 - Add spread
 - Player bullets shouldn't collide
+- Start bullets with rb disabled initially (to prevent early collisions)? Would replace initial offset of spread.
