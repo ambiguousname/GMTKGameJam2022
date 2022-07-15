@@ -1,3 +1,4 @@
 - Firing at mouse is not exact (could be the cursor texture?)
 - Make recoil much more apparent (move the gun back first, then the player?)
 - Add spread
+- Player bullets shouldn't collide

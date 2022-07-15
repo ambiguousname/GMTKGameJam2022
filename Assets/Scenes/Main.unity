@@ -418,6 +418,7 @@ MonoBehaviour:
   bulletDrag: 0
   recoil: 1
   bullet: {fileID: 1785892531762391867, guid: 51d71480bbfc36b42974ff5d73ebc3ee, type: 3}
+  spread: {fileID: 4902725612564706433, guid: 4583c0a34aa856a46b705bf73c53efb7, type: 3}
   cursorToUse: {fileID: 10307, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!114 &1146755409
 MonoBehaviour:

@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
     public float bulletDrag = 0;
     public float recoil = 0.1f;
     public GameObject bullet;
+    public GameObject spread;
 
     private GameObject _weapon;
     private GameObject _firePoint;
@@ -71,13 +72,16 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void AttemptToFireWeapon(Vector3 mousePos) {
-        if (_intendsToFire && _fireTimer <= 0.0f) {
-            _fireTimer = fireDelay;
-            var dir = mousePos - _firePoint.transform.position;
+
+    void EvaluateSpread(Vector3 mousePos)
+    {
+        // For each bullet in the spread:
+        foreach (Transform child in spread.transform) {
+            var dir = mousePos - (_firePoint.transform.position + child.localPosition);
             var rotation = Quaternion.LookRotation(Vector3.forward, dir);
             var fired = Instantiate(bullet, _firePoint.transform.position, rotation);
             Physics2D.IgnoreCollision(GetComponent<Collider2D>(), fired.GetComponent<Collider2D>(), true);
+
             var rb = fired.GetComponent<Rigidbody2D>();
             rb.drag = bulletDrag;
 
@@ -88,7 +92,13 @@ public class PlayerController : MonoBehaviour
             var unbiased = new Vector3(dir.x, dir.y);
             rb.AddForce(unbiased.normalized * fireForce);
             _rigidbody.AddForce(-unbiased.normalized * recoil);
+        }
+    }
 
+    private void AttemptToFireWeapon(Vector3 mousePos) {
+        if (_intendsToFire && _fireTimer <= 0.0f) {
+            _fireTimer = fireDelay;
+            EvaluateSpread(mousePos);
             _intendsToFire = false;
         }
 
