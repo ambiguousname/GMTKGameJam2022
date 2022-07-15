@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     public float fireDelay = 0.1f;
     public float fireForce = 500.0f;
     public float bulletDrag = 0;
+    public float recoil = 0.1f;
     public GameObject bullet;
 
     private GameObject _weapon;
@@ -86,6 +87,7 @@ public class PlayerController : MonoBehaviour
             // So it's not based on how far away the mouse is:
             var unbiased = new Vector3(dir.x, dir.y);
             rb.AddForce(unbiased.normalized * fireForce);
+            _rigidbody.AddForce(-unbiased.normalized * recoil);
 
             _intendsToFire = false;
         }
