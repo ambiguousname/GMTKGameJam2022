@@ -226,7 +226,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 2747690628134850419, guid: 16037dbd798344f57a526d53d48f5ead, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -327,7 +327,7 @@ GameObject:
   - component: {fileID: 1146755411}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -413,6 +413,10 @@ MonoBehaviour:
   acceleration: 10
   mouseSensitivity: 1
   bodyLookSpeed: 2
+  fireDelay: 0.1
+  fireForce: 500
+  bulletDrag: 0
+  bullet: {fileID: 1785892531762391867, guid: 51d71480bbfc36b42974ff5d73ebc3ee, type: 3}
   cursorToUse: {fileID: 10307, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!114 &1146755409
 MonoBehaviour:
