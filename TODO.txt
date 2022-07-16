@@ -1,9 +1,8 @@
 - Firing at mouse is not exact (could be the cursor texture?)
 - Make recoil much more apparent (move the gun back first, then the player?)
-- Fix bug where ending dialogue by clicking fires bullets.
-- Add drag + drop for multiple dice
-- Add exit button
-- Bullets don't go on top of tiles
-- Dialogue is now skipping too much
-- Add close button to die rolls
 - Tie player movement into update? (Or accelerate). Slows down during combat.
+- Add art
+- Main Menu
+- Pause Menu
+- Credits
+- Settings(?)
