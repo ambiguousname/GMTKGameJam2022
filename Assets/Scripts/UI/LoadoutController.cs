@@ -10,6 +10,7 @@ public class LoadoutController : MonoBehaviour
     private int _activeIndex;
     private string _activeAttr;
     public void ShowLoadout() {
+        Time.timeScale = 0;
         FindObjectOfType<RollerManager>().EnableRolling((dice) => {
             _activeIndex = 0;
             loadout.AddRange(dice);
