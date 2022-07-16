@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 5605864969474475114}
   - component: {fileID: 3969731997836703710}
   - component: {fileID: 1924856984520052457}
-  - component: {fileID: 5465906264379762016}
   m_Layer: 0
   m_Name: EnemyBullet
   m_TagString: Bullet
@@ -117,7 +116,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -133,17 +132,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 378330b81ca08534b809033c2590c854, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &5465906264379762016
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 457991074027607944}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 202b196a1469eb240b640cb4f5913c48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

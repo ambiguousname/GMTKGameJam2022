@@ -61,21 +61,6 @@ public class PlayerController : MonoBehaviour
         AttemptToFireWeapon();
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "PlayerBullet") {
-            Physics2D.IgnoreCollision(collision.collider, collision.otherCollider);
-        }
-    }
-
-    private void OnCollisionExit2D(Collision2D collision) {
-        if (collision.gameObject.tag == "PlayerBullet")
-        {
-            Physics2D.IgnoreCollision(collision.collider, collision.otherCollider, false);
-        }
-    }
-
-
     void EvaluateSpread()
     {
         // For each bullet in the spread:
@@ -84,9 +69,7 @@ public class PlayerController : MonoBehaviour
             // We only need the rotation of the weapon since it should be automatically pointing to the mouse at all times.
             var newPos = Helper.RotateAroundPivot(child.localPosition, -_firePoint.transform.localPosition, _weapon.transform.eulerAngles);
             var rotation = Quaternion.LookRotation(Vector3.forward, newPos);
-            // To avoid close collisions, we add the 
-            var fired = Instantiate(bullet, _firePoint.transform.position + newPos.normalized * 0.1f, rotation);
-            Physics2D.IgnoreCollision(GetComponent<Collider2D>(), fired.GetComponent<Collider2D>(), true);
+            var fired = Instantiate(bullet, _firePoint.transform.position, rotation);
 
             var rb = fired.GetComponent<Rigidbody2D>();
             rb.drag = bulletDrag;
