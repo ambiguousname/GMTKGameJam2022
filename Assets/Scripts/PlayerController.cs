@@ -31,6 +31,13 @@ public class PlayerController : MonoBehaviour
     private bool _intendsToFire = false;
     private float _fireTimer = 0.0f;
 
+    [Header("Damage")]
+    public Sprite damageSprite;
+    public float damagePauseTimer = 0.1f;
+
+    private Sprite _defaultSprite;
+    private Color _defaultTint;
+
 
     [Header("Cursor")]
     // TODO: Replace with something else (custom function calls?)
@@ -47,6 +54,9 @@ public class PlayerController : MonoBehaviour
         _weapon = this.gameObject.FindChildWithName("Weapon");
         _firePoint = _weapon.FindChildWithName("FiringPoint");
         _firePointOffset = _firePoint.transform.position;
+
+        _defaultSprite = GetComponent<SpriteRenderer>().sprite;
+        _defaultTint = GetComponent<SpriteRenderer>().color;
     }
 
     #region PhysicsUpdates
@@ -82,6 +92,23 @@ public class PlayerController : MonoBehaviour
             rb.AddForce(unbiased.normalized * fireForce);
             _rigidbody.AddForce(-unbiased.normalized * recoil);
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Bullet") {
+            Destroy(collision.gameObject);
+            StartCoroutine(HitPause());
+        }
+    }
+    IEnumerator HitPause() {
+        Time.timeScale = 0;
+        GetComponent<SpriteRenderer>().sprite = damageSprite;
+        GetComponent<SpriteRenderer>().color = Color.white;
+        yield return new WaitForSecondsRealtime(damagePauseTimer);
+        GetComponent<SpriteRenderer>().sprite = _defaultSprite;
+        GetComponent<SpriteRenderer>().color = _defaultTint;
+        Time.timeScale = 1;
     }
 
     private void AttemptToFireWeapon() {

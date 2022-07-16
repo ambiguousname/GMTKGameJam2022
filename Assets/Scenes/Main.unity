@@ -248,7 +248,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &563038729
 Transform:
   m_ObjectHideFlags: 0
@@ -277,7 +277,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1
   data:
-    dataString: UEsDBBQAAAgIAACAn+uOG7uzUAIAAA4FAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQF1VMtu2zAQ/BWD56awBOfR3lrFcXpIYsQNctFlJa4swhQp8BHbCfzvXVKypbjtScLM7O7sQ/pgQtkWS6fNwgj+oDmy7xMW3tmXyUDe4w7WWq3EOx41r4K7Ooggap7BCU14EsKsbtAZUf5QaxnEUwK9EpU2zZyvMdPWWYIrkBaJMtqFaEXQx4Tt6JFeh5B9H/oenpMDvZWoHJpB92+VV6WEpkUe/A7i5LJXJ5dRpqiTXhFcl1pKYXsbzO3b2GYGrfXUBAm4AGorlg/6GsW6dsHsOPipqiy63pKB/a0wNJ0uK/upu5E1YDedrzeQHk/Gu5QPf7EXSaQro5v7Y9VkGiq4WpSbZ9iXYN1oomP49rNtr7YgN1BIfK1RPeqF0V5xIp3xIdRbTG9HqU6dZTWWm0HXeT0Dffv/3YQmDrH5XSZFUwTq66wDVlLHcX8LYjS0mF/kOB6F7VMQGly8WPwN6/H19MSdMNYR1bepgr1CexOkbB6HFrrxLtNGYYR70y0qkG6/pDTufINn3KjsGXMH4Tvpi/fc8fzPQiI86KfTM2qpt6dt2VpvH9DWT95JoXAwHYhHmlOmleoObDyTY9jKmwrKUdjaC/75thhcFld4M7sp0mlRQAIX6dXsiqc3KVZJmfLrhMXjE4r6BLnsjPbjoa2pIbmiQzv+PiYLA208dm5guxDvjR6NXKhKr0qDqJ66DCfjaKgIfZR8zgUNaIXOCRX3zT5yJnW5QZ6fEuWx0/nOGciHLDlrxZt2AclZFn8ZOQvw6ZaXBt8EbkPxY7IDO/wBUEsDBBQAAAgIAACAn+uDPop8bQAAAHgAAAAJACQAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0Bq1YqSy0qzszPU7JSMNEz0jM011FQSi9KLMgoBooYgjilmSkgdrRSommSWaqFiUWSkUFSUqJhoq6RmYlZipGFUWqaYbJRirmhUixQfUllQapfYm4qRE9AYklGWmZeSmZeup57UWaKO8hopdhaAFBLAQItABQAAAgIAACAn+uOG7uzUAIAAA4FAAALACQAAAAAAAAAAAAAAAAAAABncmFwaDAuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLAQItABQAAAgIAACAn+uDPop8bQAAAHgAAAAJACQAAAAAAAAAAAAAAJ0CAABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwUGAAAAAAIAAgC4AAAAVQMAAAAA
+    dataString: UEsDBBQAAAgIAACAn+ttKY4DUQIAABEFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQF1VMuSmzAQ/BWXzlmXoWyvk1uCvd4cvHatk9oLF4EGUFlIlB5+lv89ksDAkuQEdM+jezTihihXFaRayLWkZCMIoG8j5N7Rl1FHvsIZ54Lv6RUeMR+U6MIFYR/zjjUVFg9cmhIlaEnT7zxnLnhiQcNpJmS5IjlEQmll4QwzBZaSQrtsbqHbCJ3tI3x2KZcm9eqeo7t9S4FrkF3cv6MMTxkuKyBOb6/orIkOpuOZD+TWSxMzGTs2FYxR1UhB+lJ5q+/44owSiq0t3965LIDmhXYf4+nXfu42yxToRpXElyWVdkB1UfRD1FMrsTrU0o6YGWi111U3f7FPgaczKcrXtvHEddAFTQ9WYoqV7g21Dy8/Kzf8hNkBJww+CuBvYi2F4cSSWhqXahSEy+6zNRYVkB46vJY6AE31/9NxHu7e+zlitEz82Kc1sGfCDzvw5wDSnsxPq9jvhWpqWNTJ+K3gF877C9QQL1QqbanGJnf6EmGkC0UrPzRnx+hISA4eblRXwDHTl50to4cnOOB6bQfMC3ZXpWnecI8bMEjxcBc/mQyonTi1p6UKcdqAKrZGM8qhE+2INzunSHBeL1h/Jo+0vZEZTntpuaHk824hPEvmsJguknCSJDjAT+F8OifhIoQsSEPyHCC/fJRbn5jtaqHNeOyx8a44t4v2+IOM1hJXftmJxKc1vZaiN3LKM7FPJQDf1hVa4SBtE3sryYpQO6A9aE25P290ixET6QFI3BaKvdPVWUscd1ViVNGj0A6JUeT/GjFycLvMOwlHCifX/FHsju5/AFBLAwQUAAAICAAAgJ/rgz6KfG0AAAB4AAAACQAkAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAatWKkstKs7Mz1OyUjDRM9IzNNdRUEovSizIKAaKGII4pZkpIHa0UqJpklmqhYlFkpFBUlKiYaKukZmJWYqRhVFqmmGyUYq5oVIsUH1JZUGqX2JuKkRPQGJJRlpmXkpmXrqee1FmijvIaKXYWgBQSwECLQAUAAAICAAAgJ/rbSmOA1ECAAARBQAACwAkAAAAAAAAAAAAAAAAAAAAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwECLQAUAAAICAAAgJ/rgz6KfG0AAAB4AAAACQAkAAAAAAAAAAAAAACeAgAAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsFBgAAAAACAAIAuAAAAFYDAAAAAA==
     upgradeData: 
     file_cachedStartup: {fileID: 0}
     data_cachedStartup: 
@@ -771,6 +771,8 @@ MonoBehaviour:
   ammo: 10
   bullet: {fileID: 1785892531762391867, guid: 51d71480bbfc36b42974ff5d73ebc3ee, type: 3}
   spread: {fileID: 4902725612564706433, guid: 4583c0a34aa856a46b705bf73c53efb7, type: 3}
+  damageSprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  damagePauseTimer: 0.1
   cursorToUse: {fileID: 10307, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!114 &1146755409
 MonoBehaviour:
@@ -1192,6 +1194,9 @@ GameObject:
   - component: {fileID: 1878139672}
   - component: {fileID: 1878139673}
   - component: {fileID: 1878139674}
+  - component: {fileID: 1878139676}
+  - component: {fileID: 1878139675}
+  - component: {fileID: 1878139677}
   m_Layer: 2
   m_Name: Enemy
   m_TagString: Untagged
@@ -1309,7 +1314,8 @@ MonoBehaviour:
   fireForce: 500
   recoil: 0.1
   fireDelay: 2
-  rotateSpeed: 1
+  rotateSpeed: 3
+  minDistFromPlayer: 5
 --- !u!50 &1878139674
 Rigidbody2D:
   serializedVersion: 4
@@ -1331,6 +1337,98 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1878139675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1878139669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6eb1402c17e84a9282a7f0f62eb584f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 5
+  radius: 0.5
+  height: 2
+  canMove: 1
+  maxSpeed: 2
+  gravity: {x: NaN, y: NaN, z: NaN}
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  centerOffsetCompatibility: NaN
+  repathRateCompatibility: NaN
+  canSearchCompability: 0
+  orientation: 1
+  enableRotation: 0
+  autoRepath:
+    mode: 2
+    interval: 0.5
+    sensitivity: 10
+    maximumInterval: 2
+    visualizeSensitivity: 0
+  targetCompatibility: {fileID: 0}
+  maxAcceleration: -2.5
+  rotationSpeed: 360
+  slowdownDistance: 0.6
+  pickNextWaypointDist: 2
+  endReachedDistance: 0.2
+  alwaysDrawGizmos: 0
+  slowWhenNotFacingTarget: 1
+  whenCloseToDestination: 0
+  constrainInsideGraph: 0
+--- !u!114 &1878139676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1878139669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  drawGizmos: 1
+  detailedGizmos: 0
+  startEndModifier:
+    addPoints: 0
+    exactStartPoint: 3
+    exactEndPoint: 3
+    useRaycasting: 0
+    mask:
+      serializedVersion: 2
+      m_Bits: 4294967295
+    useGraphRaycasting: 0
+  traversableTags: -1
+  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  graphMask:
+    value: -1
+--- !u!114 &1878139677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1878139669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb6a34d769a1e4ac7b0b30e433aa443c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  smoothType: 0
+  subdivisions: 4
+  iterations: 2
+  strength: 0.5
+  uniformLength: 1
+  maxSegmentLength: 2
+  bezierTangentLength: 0.4
+  offset: 0.2
+  factor: 0.1
 --- !u!1 &2020507962
 GameObject:
   m_ObjectHideFlags: 0

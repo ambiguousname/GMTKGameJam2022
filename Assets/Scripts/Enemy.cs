@@ -1,3 +1,4 @@
+using Pathfinding;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,18 +12,28 @@ public class Enemy : MonoBehaviour
     public float recoil = 0.1f;
     public float fireDelay = 2;
     public float rotateSpeed = 1;
+    public float minDistFromPlayer = 10;
 
     private GameObject _firePoint;
     private GameObject _player;
     private Rigidbody2D _rigidbody;
     private float _fireTimer = 0.0f;
 
+    private IAstarAI _ai;
+
     // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
         _firePoint = this.gameObject.FindChildWithName("FiringPoint");
         _player = GameObject.FindGameObjectWithTag("Player");
         _rigidbody = GetComponent<Rigidbody2D>();
+        _ai = GetComponent<IAstarAI>();
+        _ai.onSearchPath += FixedUpdate;
+    }
+
+    private void OnDisable()
+    {
+        _ai.onSearchPath -= FixedUpdate;
     }
 
     void EvaluateSpread()
@@ -51,12 +62,10 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         var playerDir = _player.transform.position - this.transform.position;
         var hit = Physics2D.Raycast(this.transform.position, playerDir);
-        Debug.DrawLine(this.transform.position, hit.point);
         if (hit.transform.tag == "Player") {
             if (_fireTimer <= 0 && Vector3.Dot(this.transform.up, _player.transform.position) > 0)
             {
@@ -70,5 +79,9 @@ public class Enemy : MonoBehaviour
         if (_fireTimer > 0) {
             _fireTimer -= Time.fixedDeltaTime;
         }
+
+        var distFromPlayer = -(playerDir.normalized * minDistFromPlayer) + _player.transform.position;
+
+        _ai.destination = distFromPlayer;
     }
 }
