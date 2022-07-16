@@ -47,12 +47,32 @@ public class DiceDragAndDrop : MonoBehaviour, IDragHandler, IEndDragHandler
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        if (RectTransformUtility.RectangleContainsScreenPoint(_targetTransform, dragTransform.position))
+        SlotGrid containedSlot = null;
+        var slots = FindObjectsOfType<SlotGrid>();
+        foreach (var slot in slots) {
+            if (slot.gameObject.activeInHierarchy && RectTransformUtility.RectangleContainsScreenPoint(slot.GetComponent<RectTransform>(), dragTransform.position)) {
+                containedSlot = slot;
+                break;
+            }
+        }
+
+        if (containedSlot != null || RectTransformUtility.RectangleContainsScreenPoint(_targetTransform, dragTransform.position))
         {
+            if (containedSlot != null)
+            {
+                dragTransform.position = containedSlot.transform.position;
+            }
             if (!_isBeingRolled)
             {
                 _isBeingRolled = true;
-                FindObjectOfType<RollerManager>().AddDieToRoll(attachedDie);
+                if (containedSlot != null)
+                {
+                    FindObjectOfType<RollerManager>().AddDieToRoll(attachedDie, containedSlot.slot);
+                }
+                else
+                {
+                    FindObjectOfType<RollerManager>().AddDieToRoll(attachedDie);
+                }
             }
         }
         else {
