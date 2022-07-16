@@ -120,9 +120,15 @@ public class RollerManager : MonoBehaviour
         }
     }
 
-    public void EnableRolling(Action<List<Dice>> callback)
+    public void EnableRolling(Action<List<Dice>> callback, int size=-1)
     {
-        _diceToRoll = new List<Dice>();
+        if (size > 0)
+        {
+            _diceToRoll = new List<Dice>(size);
+        }
+        else {
+            _diceToRoll = new List<Dice>();
+        }
         _invRender = new List<GameObject>();
         RenderDice();
         transform.GetChild(0).GetChild(2).gameObject.SetActive(true);
@@ -130,8 +136,15 @@ public class RollerManager : MonoBehaviour
         _endCallback = callback;
     }
 
-    public void AddDieToRoll(Dice die) {
-        _diceToRoll.Add(die);
+    public void AddDieToRoll(Dice die, int slot=-1) {
+        if (slot >= 0)
+        {
+            _diceToRoll[slot] = die;
+        }
+        else
+        {
+            _diceToRoll.Add(die);
+        }
     }
 
     public void RemoveDiceFromRoll(Dice die) {
