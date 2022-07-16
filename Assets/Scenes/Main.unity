@@ -768,9 +768,11 @@ MonoBehaviour:
   fireForce: 500
   bulletDrag: 0
   recoil: 1
+  damage: 50
   ammo: 10
   bullet: {fileID: 1785892531762391867, guid: 51d71480bbfc36b42974ff5d73ebc3ee, type: 3}
   spread: {fileID: 4902725612564706433, guid: 4583c0a34aa856a46b705bf73c53efb7, type: 3}
+  health: 100
   damageSprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   damagePauseTimer: 0.1
   cursorToUse: {fileID: 10307, guid: 0000000000000000f000000000000000, type: 0}
@@ -1308,8 +1310,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94b96d65fdb261040b3f53b80905821e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 100
+  damageSprite: {fileID: -2135585597343286014, guid: eed45a33cd08446c8b88325cf82fc52f, type: 3}
+  hitTimer: 0.05
   spread: {fileID: 2303430412985649282, guid: 4339cb2620fbc7847835bb0fad16483a, type: 3}
   bullet: {fileID: 457991074027607944, guid: 5e35cfe03265e564f8c38801b2f5e3a8, type: 3}
+  damage: 10
   bulletDrag: 0
   fireForce: 500
   recoil: 0.1

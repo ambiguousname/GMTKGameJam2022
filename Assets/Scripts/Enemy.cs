@@ -5,8 +5,18 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    [Header("Hits")]
+    public float health = 100;
+    public Sprite damageSprite;
+    public float hitTimer = 0.05f;
+
+    private Sprite _defaultSprite;
+    private Color _defaultTint;
+
+    [Header("Firing")]
     public GameObject spread;
     public GameObject bullet;
+    public float damage = 10.0f;
     public float bulletDrag = 0;
     public float fireForce = 500f;
     public float recoil = 0.1f;
@@ -29,6 +39,9 @@ public class Enemy : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody2D>();
         _ai = GetComponent<IAstarAI>();
         _ai.onSearchPath += FixedUpdate;
+
+        _defaultSprite = GetComponent<SpriteRenderer>().sprite;
+        _defaultTint = GetComponent<SpriteRenderer>().color;
     }
 
     private void OnDisable()
@@ -47,6 +60,7 @@ public class Enemy : MonoBehaviour
             var rotation = Quaternion.LookRotation(Vector3.forward, newPos);
             // To avoid close collisions, we add the 
             var fired = Instantiate(bullet, _firePoint.transform.position + newPos.normalized * 0.1f, rotation);
+            fired.GetComponent<Bullet>().damage = damage;
             Physics2D.IgnoreCollision(GetComponent<Collider2D>(), fired.GetComponent<Collider2D>(), true);
 
             var rb = fired.GetComponent<Rigidbody2D>();
@@ -59,6 +73,28 @@ public class Enemy : MonoBehaviour
             var unbiased = new Vector3(newPos.x, newPos.y);
             rb.AddForce(unbiased.normalized * fireForce);
             _rigidbody.AddForce(-unbiased.normalized * recoil);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "PlayerBullet") {
+            health -= collision.GetComponent<Bullet>().damage;
+            Destroy(collision.gameObject);
+            StartCoroutine(HitPause());
+        }
+    }
+
+    IEnumerator HitPause() {
+        GetComponent<SpriteRenderer>().sprite = damageSprite;
+        GetComponent<SpriteRenderer>().color = Color.white;
+        Time.timeScale = 0;
+        yield return new WaitForSecondsRealtime(hitTimer);
+        Time.timeScale = 1;
+        GetComponent<SpriteRenderer>().sprite = _defaultSprite;
+        GetComponent<SpriteRenderer>().color = _defaultTint;
+        if (health <= 0) {
+            Destroy(this.gameObject);
         }
     }
 

@@ -20,18 +20,19 @@ public class PlayerController : MonoBehaviour
     public float fireForce = 500.0f;
     public float bulletDrag = 0;
     public float recoil = 0.1f;
+    public float damage = 50f;
     public int ammo = 10;
     public GameObject bullet;
     public GameObject spread;
 
     private GameObject _weapon;
     private GameObject _firePoint;
-    private Vector3 _firePointOffset;
 
     private bool _intendsToFire = false;
     private float _fireTimer = 0.0f;
 
     [Header("Damage")]
+    public float health = 100;
     public Sprite damageSprite;
     public float damagePauseTimer = 0.1f;
 
@@ -53,7 +54,6 @@ public class PlayerController : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody2D>();
         _weapon = this.gameObject.FindChildWithName("Weapon");
         _firePoint = _weapon.FindChildWithName("FiringPoint");
-        _firePointOffset = _firePoint.transform.position;
 
         _defaultSprite = GetComponent<SpriteRenderer>().sprite;
         _defaultTint = GetComponent<SpriteRenderer>().color;
@@ -80,6 +80,7 @@ public class PlayerController : MonoBehaviour
             var newPos = Helper.RotateAroundPivot(child.localPosition, -_firePoint.transform.localPosition, _weapon.transform.eulerAngles);
             var rotation = Quaternion.LookRotation(Vector3.forward, newPos);
             var fired = Instantiate(bullet, _firePoint.transform.position, rotation);
+            fired.GetComponent<Bullet>().damage = damage;
 
             var rb = fired.GetComponent<Rigidbody2D>();
             rb.drag = bulletDrag;
@@ -97,6 +98,7 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Bullet") {
+            health -= collision.GetComponent<Bullet>().damage;
             Destroy(collision.gameObject);
             StartCoroutine(HitPause());
         }
