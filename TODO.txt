@@ -5,3 +5,4 @@
 - Add exit button
 - Bullets don't go on top of tiles
 - Dialogue is now skipping too much
+- Add close button to die rolls
