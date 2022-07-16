@@ -18,8 +18,8 @@ MonoBehaviour:
   fireForce: 500
   bulletDrag: 0
   recoil: 0.1
-  damage: 50
-  range: 500
-  maxAmmo: 10
+  damage: 10
+  range: 5
+  maxAmmo: 24
   spread: {fileID: 8049259488411827246, guid: 9e6d53a78fd85d345aac52f425ec2a6b, type: 3}
   fireFastAsTrigger: 0
