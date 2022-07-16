@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Bullet
   - PlayerBullet
+  - CineCamera
   layers:
   - Default
   - TransparentFX

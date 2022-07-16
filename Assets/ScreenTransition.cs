@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,25 +19,28 @@ public class ScreenTransition : MonoBehaviour
         print(width);
     }
 
+    void GetClosestAndActivate() {
+        var cameras = GameObject.FindGameObjectsWithTag("CineCamera");
+        var player = GameObject.FindGameObjectWithTag("Player");
+        var dist = Vector3.Distance(cameras[0].transform.position, player.transform.position);
+        var closest = cameras[0];
+        for (int i = 1; i < cameras.Length; i++) {
+            var newDist = Vector3.Distance(cameras[i].transform.position, player.transform.position);
+            if (newDist < dist) {
+                dist = newDist;
+                closest = cameras[i];
+            }
+        }
+        closest.GetComponent<ICinemachineCamera>().Priority = 11;
+    }
+
     // Update is called once per frame
     void Update()
     { 
-        if (cam.WorldToScreenPoint(player.position).x > Screen.width)
+        if (cam.WorldToScreenPoint(player.position).x > Screen.width || cam.WorldToScreenPoint(player.position).x < 0 || cam.WorldToScreenPoint(player.position).y > Screen.height || cam.WorldToScreenPoint(player.position).y < 0)
         {
-            transform.position += new Vector3(width, 0, 0);
-        }
-        else if (cam.WorldToScreenPoint(player.position).x < 0)
-        {
-            transform.position -= new Vector3(width, 0, 0);
-        }
-
-        if (cam.WorldToScreenPoint(player.position).y > Screen.height)
-        {
-            transform.position += new Vector3(0, height, 0);
-        }
-        else if (cam.WorldToScreenPoint(player.position).y < 0)
-        {
-            transform.position -= new Vector3(0, height, 0);
+            GetComponent<CinemachineBrain>().ActiveVirtualCamera.Priority = 10;
+            GetClosestAndActivate();
         }
 
     }
