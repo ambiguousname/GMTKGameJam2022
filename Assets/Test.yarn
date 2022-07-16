@@ -1,5 +1,8 @@
 ﻿title: Start
 tags:
 ---
-Cap'n Crunch: Avast, ye treasonous land-lubbers! I be killing ye now.
+Cap'n Crunch: [style color="ff0000"] Avast, ye treasonous land-lubbers! I be killing ye now.[/style][range="1,3"/]
+-> 1-3: Run away. [range="1,3"/]
+-> 4-6: Spit in his eye. [range="4,6"/]
+-> [style color="ff0000"]1-3: Breathe fire.[/style] [range range="1,3" attribute="fire"/]
 ===

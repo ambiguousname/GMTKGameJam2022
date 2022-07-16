@@ -509,6 +509,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 7efe03b3-5935-40ac-ba93-3b22a5c7d5c9
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 5925e040-86b4-4bc3-ae91-ee616b7a2400
+    m_ActionName: Player/Reload[/Keyboard/r]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
