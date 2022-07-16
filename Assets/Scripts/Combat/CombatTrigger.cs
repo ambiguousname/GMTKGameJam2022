@@ -5,9 +5,10 @@ using UnityEngine;
 public class CombatTrigger : MonoBehaviour
 {
     bool _triggered = false;
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnBecameVisible()
     {
-        if (collision.tag == "Player" && !_triggered) {
+        FindObjectOfType<CombatController>().inCombat = false;
+        if (!_triggered) {
             _triggered = true;
             FindObjectOfType<LoadoutController>().ShowLoadout();
         }

@@ -10,13 +10,16 @@ public class LoadoutController : MonoBehaviour
     private int _activeIndex;
     private string _activeAttr;
     public void ShowLoadout() {
-        Time.timeScale = 0;
+        transform.GetChild(0).gameObject.SetActive(true);
         FindObjectOfType<RollerManager>().EnableRolling((dice) => {
             _activeIndex = 0;
             loadout.AddRange(dice);
             _activeWeapon = loadout[0].Roll();
             _activeAttr = loadout[0].attribute;
             stats[_activeWeapon].Equip();
+            transform.GetChild(0).gameObject.SetActive(false);
+            FindObjectOfType<RollerManager>().EndRolling();
+            FindObjectOfType<CombatController>().inCombat = true;
         });
     }
 

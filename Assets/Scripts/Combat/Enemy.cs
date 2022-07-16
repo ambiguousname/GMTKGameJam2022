@@ -49,6 +49,11 @@ public class Enemy : MonoBehaviour
         _ai.onSearchPath -= FixedUpdate;
     }
 
+    private void OnBecameVisible()
+    {
+        FindObjectOfType<CombatController>().enemies.Add(this);
+    }
+
     void EvaluateSpread()
     {
         // For each bullet in the spread:
@@ -106,30 +111,36 @@ public class Enemy : MonoBehaviour
         GetComponent<SpriteRenderer>().sprite = _defaultSprite;
         GetComponent<SpriteRenderer>().color = _defaultTint;
         if (health <= 0) {
+            FindObjectOfType<CombatController>().enemies.Remove(this);
             Destroy(this.gameObject);
         }
     }
 
     void FixedUpdate()
     {
-        var playerDir = _player.transform.position - this.transform.position;
-        var hit = Physics2D.Raycast(this.transform.position, playerDir);
-        if (hit.transform.tag == "Player") {
-            if (_fireTimer <= 0 && Vector3.Dot(this.transform.up, _player.transform.position) > 0)
+        if (FindObjectOfType<CombatController>().inCombat)
+        {
+            var playerDir = _player.transform.position - this.transform.position;
+            var hit = Physics2D.Raycast(this.transform.position, playerDir);
+            if (hit.transform.tag == "Player")
             {
-                _fireTimer = fireDelay;
-                EvaluateSpread();
+                if (_fireTimer <= 0 && Vector3.Dot(this.transform.up, _player.transform.position) > 0)
+                {
+                    _fireTimer = fireDelay;
+                    EvaluateSpread();
+                }
+
+                this.transform.rotation = Quaternion.Slerp(this.transform.rotation, Quaternion.LookRotation(Vector3.forward, playerDir), rotateSpeed * Time.fixedDeltaTime);
             }
 
-            this.transform.rotation = Quaternion.Slerp(this.transform.rotation, Quaternion.LookRotation(Vector3.forward, playerDir), rotateSpeed * Time.fixedDeltaTime);
+            if (_fireTimer > 0)
+            {
+                _fireTimer -= Time.fixedDeltaTime;
+            }
+
+            var distFromPlayer = -(playerDir.normalized * minDistFromPlayer) + _player.transform.position;
+
+            _ai.destination = distFromPlayer;
         }
-
-        if (_fireTimer > 0) {
-            _fireTimer -= Time.fixedDeltaTime;
-        }
-
-        var distFromPlayer = -(playerDir.normalized * minDistFromPlayer) + _player.transform.position;
-
-        _ai.destination = distFromPlayer;
     }
 }
