@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1ee53e2551e33748bccf1865b57e206, type: 3}
+  m_Name: Shotgun
+  m_EditorClassIdentifier: 
+  acceleration: 10
+  bodyLookSpeed: 1
+  fireDelay: 0.5
+  fireForce: 500
+  bulletDrag: 0
+  recoil: 0.1
+  damage: 50
+  range: 500
+  maxAmmo: 10
+  spread: {fileID: 8049259488411827246, guid: 9e6d53a78fd85d345aac52f425ec2a6b, type: 3}
+  fireFastAsTrigger: 0

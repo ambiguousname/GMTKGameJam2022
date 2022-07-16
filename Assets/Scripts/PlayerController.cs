@@ -13,7 +13,6 @@ public class PlayerController : MonoBehaviour
 
     [Header("Movement")]
     public float acceleration = 10.0f;
-    public float mouseSensitivity = 1.0f;
     // Player is slow to look, but the gun turns fast (it's the real source of bullets anyways)
     public float bodyLookSpeed = 1.0f;
 
@@ -27,8 +26,11 @@ public class PlayerController : MonoBehaviour
     public float recoil = 0.1f;
     public float damage = 50f;
     public int ammo = 10;
+    public int maxAmmo = 10;
     public GameObject bullet;
     public GameObject spread;
+    public bool fireFastAsTrigger = false;
+    public float range = 1000f;
 
     private GameObject _weapon;
     private GameObject _firePoint;
@@ -89,6 +91,7 @@ public class PlayerController : MonoBehaviour
             var rotation = Quaternion.LookRotation(Vector3.forward, newPos);
             var fired = Instantiate(bullet, _firePoint.transform.position, rotation);
             fired.GetComponent<Bullet>().damage = damage;
+            fired.GetComponent<Bullet>().range = range;
 
             var rb = fired.GetComponent<Rigidbody2D>();
             rb.drag = bulletDrag;
@@ -132,7 +135,7 @@ public class PlayerController : MonoBehaviour
             if (ammo == 0)
             {
                 print("Reloading!");
-                ammo = 10;
+                ammo = maxAmmo;
             }
 
             _fireTimer = fireDelay;
@@ -165,8 +168,18 @@ public class PlayerController : MonoBehaviour
     }
 
     public void OnFire(InputValue value) {
-        _intendsToFire = (value.Get<float>() >= 0.5f) ? true : false;
-        onFire.Invoke();
+        if (!fireFastAsTrigger)
+        {
+            _intendsToFire = (value.Get<float>() >= 0.5f) ? true : false;
+            onFire.Invoke();
+        }
+    }
+
+    public void OnFireFastAsTrigger(InputValue value) {
+        if (fireFastAsTrigger) {
+            _intendsToFire = (value.Get<float>() >= 0.5f) ? true : false;
+            onFire.Invoke();
+        }
     }
 
     #endregion

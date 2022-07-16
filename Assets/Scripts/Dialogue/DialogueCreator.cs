@@ -164,7 +164,16 @@ public class DialogueCreator : DialogueViewBase
     void ShowRolling() {
         var roller = FindObjectOfType<RollerManager>();
         if (!roller.transform.GetChild(0).gameObject.activeInHierarchy) {
-            roller.EnableRolling(ChooseOptions);
+            roller.EnableRolling((diceList) => {
+                var sum = 0;
+                foreach (var die in diceList) {
+                    sum += die.Roll();
+                }
+                var attr = UnityEngine.Random.Range(0, diceList.Count);
+                var attrToUse = diceList[attr].attribute;
+                roller.EndRolling();
+                ChooseOptions(sum, attrToUse);
+            });
         }
     }
 

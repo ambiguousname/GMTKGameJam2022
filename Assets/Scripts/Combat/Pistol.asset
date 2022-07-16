@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1ee53e2551e33748bccf1865b57e206, type: 3}
+  m_Name: Pistol
+  m_EditorClassIdentifier: 
+  acceleration: 10
+  bodyLookSpeed: 1
+  fireDelay: 0.1
+  fireForce: 500
+  bulletDrag: 0
+  recoil: 0.1
+  damage: 30
+  maxAmmo: 20
+  spread: {fileID: 6099286412882295873, guid: cd99fbbbf8ae9b449b6b4361d1c4ac45, type: 3}
+  fireFastAsTrigger: 1

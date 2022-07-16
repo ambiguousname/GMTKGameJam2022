@@ -15,7 +15,7 @@ public class RollerManager : MonoBehaviour
 
     private GridLayoutGroup _rollBox;
 
-    private Action<int, string> _endCallback;
+    private Action<List<Dice>> _endCallback;
     // Start is called before the first frame update
     void Start()
     {
@@ -120,11 +120,12 @@ public class RollerManager : MonoBehaviour
         }
     }
 
-    public void EnableRolling(Action<int, string> callback)
+    public void EnableRolling(Action<List<Dice>> callback)
     {
         _diceToRoll = new List<Dice>();
         _invRender = new List<GameObject>();
         RenderDice();
+        transform.GetChild(0).GetChild(2).gameObject.SetActive(true);
         transform.GetChild(0).gameObject.SetActive(true);
         _endCallback = callback;
     }
@@ -138,18 +139,14 @@ public class RollerManager : MonoBehaviour
     }
 
     public void Roll() {
-        var sum = 0;
-        foreach (var die in _diceToRoll) {
-            sum += die.Roll();
-            // Remove from the inventory as we roll:
-            RemoveDie(die);
+        // Remove from the inventory:
+        foreach (var dice in _diceToRoll) {
+            RemoveDie(dice);
         }
-        var dieToPick = UnityEngine.Random.Range(0, _diceToRoll.Count);
-        var attr = _diceToRoll[dieToPick];
-        EndRolling(sum, attr.attribute);
+        _endCallback(_diceToRoll);
     }
 
-    public void EndRolling(int outcome, string attribute)
+    public void EndRolling()
     {
         foreach (var item in _invRender) {
             Destroy(item);
@@ -157,6 +154,5 @@ public class RollerManager : MonoBehaviour
         _invRender.Clear();
         _diceToRoll.Clear();
         transform.GetChild(0).gameObject.SetActive(false);
-        _endCallback(outcome, attribute);
     }
 }
