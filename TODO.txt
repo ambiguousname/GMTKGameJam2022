@@ -4,3 +4,4 @@
 - Add drag + drop for multiple dice
 - Add exit button
 - Bullets don't go on top of tiles
+- Dialogue is now skipping too much

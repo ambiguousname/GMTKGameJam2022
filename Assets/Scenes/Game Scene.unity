@@ -53774,7 +53774,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 856844785}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.55, y: -1.02, z: -11.909146}
+  m_LocalPosition: {x: -1.87, y: 0.37, z: -11.909146}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -94175,31 +94175,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inCombat: 0
   enemies: []
---- !u!1 &1825188678 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5640761883226592677, guid: 5ed9494ad90deed4584b54ca7e9813f4, type: 3}
-  m_PrefabInstance: {fileID: 836217525}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1825188684
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1825188678}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a160d838ff8b4b4693ac20007e008c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_AssetsPPU: 16
-  m_RefResolutionX: 416
-  m_RefResolutionY: 226
-  m_UpscaleRT: 1
-  m_PixelSnapping: 0
-  m_CropFrameX: 0
-  m_CropFrameY: 0
-  m_StretchFill: 0
 --- !u!114 &1963482400 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6699560113093243680, guid: 4c6c9e9ede1335847a5f47c913a2a681, type: 3}

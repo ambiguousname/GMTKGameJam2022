@@ -152,11 +152,15 @@ public class RollerManager : MonoBehaviour
     }
 
     public void Roll() {
-        // Remove from the inventory:
-        foreach (var dice in _diceToRoll) {
-            RemoveDie(dice);
+        if (_diceToRoll.Count > 0)
+        {
+            // Remove from the inventory:
+            foreach (var dice in _diceToRoll)
+            {
+                RemoveDie(dice);
+            }
+            _endCallback(_diceToRoll);
         }
-        _endCallback(_diceToRoll);
     }
 
     public void EndRolling()
