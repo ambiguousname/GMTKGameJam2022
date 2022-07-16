@@ -54139,6 +54139,14 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2345646382835261786, guid: 5ed9494ad90deed4584b54ca7e9813f4, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.000015258789
+      objectReference: {fileID: 0}
+    - target: {fileID: 2345646382835261786, guid: 5ed9494ad90deed4584b54ca7e9813f4, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.000015258789
+      objectReference: {fileID: 0}
     - target: {fileID: 2729733553359420727, guid: 5ed9494ad90deed4584b54ca7e9813f4, type: 3}
       propertyPath: m_AssetsPPU
       value: 16
@@ -110208,6 +110216,7 @@ MonoBehaviour:
   doors: {fileID: 1308301826}
   inCombat: 0
   waves: []
+  teleportTo: {fileID: 0}
 --- !u!1001 &1240129121
 PrefabInstance:
   m_ObjectHideFlags: 0

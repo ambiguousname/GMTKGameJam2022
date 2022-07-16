@@ -29,6 +29,7 @@ public class DialogueCreator : DialogueViewBase
     private Action<int> _choiceFinished;
     private List<DialogueChoice> _choices;
     private PlayerController _player;
+    public bool requiredDialogue = false;
 
     private void Awake()
     {
@@ -88,6 +89,7 @@ public class DialogueCreator : DialogueViewBase
     public override void DialogueStarted()
     {
         this.transform.GetChild(0).gameObject.SetActive(true);
+        this.transform.GetChild(0).GetChild(4).gameObject.SetActive(!requiredDialogue);
         _player.moveEnabled = false;
         FindObjectOfType<CombatUIManager>().Show(false);
     }
@@ -259,6 +261,7 @@ public class DialogueCreator : DialogueViewBase
 
     public override void DialogueComplete()
     {
+        FindObjectOfType<RollerManager>().EndRolling();
         this.transform.GetChild(0).gameObject.SetActive(false);
         _player.moveEnabled = true;
         FindObjectOfType<CombatUIManager>().Show(true);

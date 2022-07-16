@@ -23,6 +23,7 @@ public class SocialInteraction : MonoBehaviour
 
     void Trigger() {
         _wasTriggered = true;
+        FindObjectOfType<DialogueCreator>().requiredDialogue = triggersAutomatically;
         FindObjectOfType<DialogueRunner>().StartDialogue(yarnNodeToStart);
     }
 
