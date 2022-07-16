@@ -1,3 +1,5 @@
 - Firing at mouse is not exact (could be the cursor texture?)
 - Make recoil much more apparent (move the gun back first, then the player?)
 - Fix bug where ending dialogue by clicking fires bullets.
+- Add drag + drop for multiple dice
+- Add exit button
