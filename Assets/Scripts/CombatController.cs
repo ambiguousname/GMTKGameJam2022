@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CombatController : MonoBehaviour
 {
+    public GameObject doors;
     public bool inCombat = false;
     public List<GameObject> waves;
     private GameObject _wave;
@@ -15,9 +16,11 @@ public class CombatController : MonoBehaviour
         {
             inCombat = false;
             _index = 0;
+            doors.SetActive(false);
             FindObjectOfType<PlayerController>().fireEnabled = false;
         }
         else if (inCombat) {
+            doors.SetActive(true);
             _wave = waves[_index];
             _wave.SetActive(true);
         }

@@ -6,13 +6,17 @@ public class CombatTrigger : MonoBehaviour
 {
     bool _triggered = false;
     public List<GameObject> waves;
-    private void OnBecameVisible()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        FindObjectOfType<CombatController>().inCombat = false;
-        if (!_triggered) {
-            FindObjectOfType<CombatController>().waves = waves;
-            _triggered = true;
-            FindObjectOfType<LoadoutController>().ShowLoadout();
+        if (collision.tag == "Player")
+        {
+            FindObjectOfType<CombatController>().inCombat = false;
+            if (!_triggered)
+            {
+                FindObjectOfType<CombatController>().waves = waves;
+                _triggered = true;
+                FindObjectOfType<LoadoutController>().ShowLoadout();
+            }
         }
     }
 }
