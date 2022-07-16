@@ -45,6 +45,7 @@ public class PlayerController : MonoBehaviour
     public float health = 100;
     public Sprite damageSprite;
     public float damagePauseTimer = 0.1f;
+    public bool fireEnabled = false;
 
     private Sprite _defaultSprite;
     private Color _defaultTint;
@@ -83,6 +84,9 @@ public class PlayerController : MonoBehaviour
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(new Vector3(screenPos.x, screenPos.y, this.transform.position.y));
             UpdateRotations(mousePos);
             AttemptToFireWeapon();
+        }
+        else {
+            _rigidbody.velocity = Vector2.zero;
         }
     }
 
@@ -132,7 +136,7 @@ public class PlayerController : MonoBehaviour
     }
 
     private void AttemptToFireWeapon() {
-        if (_intendsToFire && _fireTimer <= 0.0f) {
+        if (fireEnabled && _intendsToFire && _fireTimer <= 0.0f) {
             //placeholder ammo code just to show off UI
             ammo--;
 
@@ -184,15 +188,14 @@ public class PlayerController : MonoBehaviour
         if (!fireFastAsTrigger)
         {
             _intendsToFire = (value.Get<float>() >= 0.5f) ? true : false;
-            onFire.Invoke();
         }
     }
 
     public void OnFireFastAsTrigger(InputValue value) {
         if (fireFastAsTrigger) {
             _intendsToFire = (value.Get<float>() >= 0.5f) ? true : false;
-            onFire.Invoke();
         }
+        onFire.Invoke();
     }
 
     #endregion

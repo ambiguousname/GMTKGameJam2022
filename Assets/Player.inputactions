@@ -33,7 +33,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "FastAsTrigger",
+                    "name": "FireFastAsTrigger",
                     "type": "Button",
                     "id": "c7a41f08-1c47-4277-8006-d8984c856c74",
                     "expectedControlType": "Button",
@@ -235,7 +235,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "FastAsTrigger",
+                    "action": "FireFastAsTrigger",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -246,7 +246,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "FastAsTrigger",
+                    "action": "FireFastAsTrigger",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

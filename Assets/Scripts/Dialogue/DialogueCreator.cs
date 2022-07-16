@@ -44,11 +44,6 @@ public class DialogueCreator : DialogueViewBase
         _player.onFire.AddListener(FireClick);
     }
 
-    private void OnDisable()
-    {
-        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().onFire.RemoveListener(FireClick);
-    }
-
     public void SetOption(int start, int end, string attribute="") {
         _choices.Add(new DialogueChoice(start, end, attribute));
     }

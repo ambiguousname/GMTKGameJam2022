@@ -12,6 +12,7 @@ public class CombatController : MonoBehaviour
         if (inCombat && enemies.Count <= 0)
         {
             inCombat = false;
+            FindObjectOfType<PlayerController>().fireEnabled = true;
         }
         else if (!inCombat && enemies.Count > 0) {
             enemies.Clear();

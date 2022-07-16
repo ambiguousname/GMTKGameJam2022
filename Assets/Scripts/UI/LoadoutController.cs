@@ -22,6 +22,7 @@ public class LoadoutController : MonoBehaviour
             FindObjectOfType<RollerManager>().EndRolling();
             FindObjectOfType<CombatController>().inCombat = true;
             FindObjectOfType<PlayerController>().moveEnabled = true;
+            FindObjectOfType<PlayerController>().fireEnabled = true;
         }, false, 6);
     }
 
@@ -37,11 +38,6 @@ public class LoadoutController : MonoBehaviour
     }
 
     public void Reload() {
-        if (_activeIndex > loadout.Count)
-        {
-            _activeIndex = 0;
-        }
-
         // In case there are fewer than 6 dice:
         int startIndex = _activeIndex;
         while (loadout[_activeIndex].faces == null) {
@@ -55,9 +51,15 @@ public class LoadoutController : MonoBehaviour
                 _activeIndex = 0;
             }
         }
-        _activeWeapon = loadout[_activeIndex].Roll();
+        // Result is 1-6 (We want 0-5):
+        _activeWeapon = loadout[_activeIndex].Roll() - 1;
         _activeAttr = loadout[_activeIndex].attribute;
         stats[_activeWeapon].Equip();
+
         _activeIndex++;
+        if (_activeIndex > loadout.Count)
+        {
+            _activeIndex = 0;
+        }
     }
 }

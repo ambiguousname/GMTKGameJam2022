@@ -144,6 +144,7 @@ public class RollerManager : MonoBehaviour
     }
 
     public void AddDieToRoll(Dice die, int slot=-1) {
+        Debug.Log(die.faces + " " + slot);
         if (slot >= 0)
         {
             _diceToRoll[slot] = die;
