@@ -137,6 +137,8 @@ public class RollerManager : MonoBehaviour
         var sum = 0;
         foreach (var die in _diceToRoll) {
             sum += die.Roll();
+            // Remove from the inventory as we roll:
+            RemoveDie(die);
         }
         var dieToPick = UnityEngine.Random.Range(0, _diceToRoll.Count);
         var attr = _diceToRoll[dieToPick];
