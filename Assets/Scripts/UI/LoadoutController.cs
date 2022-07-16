@@ -10,6 +10,8 @@ public class LoadoutController : MonoBehaviour
     private int _activeIndex;
     private string _activeAttr;
     public void ShowLoadout() {
+        FindObjectOfType<CombatUIManager>().Show(false);
+        FindObjectOfType<PlayerController>().moveEnabled = false;
         transform.GetChild(0).gameObject.SetActive(true);
         FindObjectOfType<RollerManager>().EnableRolling((dice) => {
             _activeIndex = 0;
@@ -18,9 +20,11 @@ public class LoadoutController : MonoBehaviour
             _activeAttr = loadout[0].attribute;
             stats[_activeWeapon].Equip();
             transform.GetChild(0).gameObject.SetActive(false);
+            FindObjectOfType<CombatUIManager>().Show(true);
             FindObjectOfType<RollerManager>().EndRolling();
             FindObjectOfType<CombatController>().inCombat = true;
-        });
+            FindObjectOfType<PlayerController>().moveEnabled = true;
+        }, false, 6);
     }
 
     public void Reload() {

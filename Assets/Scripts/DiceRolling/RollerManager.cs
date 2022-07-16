@@ -109,7 +109,14 @@ public class RollerManager : MonoBehaviour
         }
     }
 
-    IEnumerator SetDieParent(Transform obj, Vector3 offset, Transform parent) {
+    IEnumerator SetDieParent(Transform obj, Vector3 offset, Transform parent)
+    {
+        // This is annoying as hell but it works:
+        obj.position = parent.position + offset;
+        yield return new WaitForEndOfFrame();
+        obj.position = parent.position + offset;
+        yield return new WaitForEndOfFrame();
+        obj.position = parent.position + offset;
         yield return new WaitForEndOfFrame();
         obj.position = parent.position + offset;
     }
@@ -120,18 +127,18 @@ public class RollerManager : MonoBehaviour
         }
     }
 
-    public void EnableRolling(Action<List<Dice>> callback, int size=-1)
+    public void EnableRolling(Action<List<Dice>> callback, bool showDragBox = true, int size=-1)
     {
+        _diceToRoll = new List<Dice>();
         if (size > 0)
         {
-            _diceToRoll = new List<Dice>(size);
-        }
-        else {
-            _diceToRoll = new List<Dice>();
+            for (int i = 0; i < size; i++) {
+                _diceToRoll.Add(new Dice());
+            }
         }
         _invRender = new List<GameObject>();
         RenderDice();
-        transform.GetChild(0).GetChild(2).gameObject.SetActive(true);
+        transform.GetChild(0).GetChild(1).gameObject.SetActive(showDragBox);
         transform.GetChild(0).gameObject.SetActive(true);
         _endCallback = callback;
     }
@@ -171,5 +178,6 @@ public class RollerManager : MonoBehaviour
         _invRender.Clear();
         _diceToRoll.Clear();
         transform.GetChild(0).gameObject.SetActive(false);
+        transform.GetChild(0).GetChild(1).gameObject.SetActive(false);
     }
 }

@@ -28,7 +28,10 @@ public class DiceDragAndDrop : MonoBehaviour, IDragHandler, IEndDragHandler
 
     private void Start()
     {
-        _targetTransform = GameObject.Find("Drag Here Box").GetComponent<RectTransform>();
+        if (GameObject.Find("Drag Here Box"))
+        {
+            _targetTransform = GameObject.Find("Drag Here Box").GetComponent<RectTransform>();
+        }
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -56,7 +59,7 @@ public class DiceDragAndDrop : MonoBehaviour, IDragHandler, IEndDragHandler
             }
         }
 
-        if (containedSlot != null || RectTransformUtility.RectangleContainsScreenPoint(_targetTransform, dragTransform.position))
+        if (containedSlot != null || (_targetTransform != null && RectTransformUtility.RectangleContainsScreenPoint(_targetTransform, dragTransform.position)))
         {
             if (containedSlot != null)
             {
