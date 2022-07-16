@@ -110521,6 +110521,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2262124281654824911, guid: 926a77cb280aaff469eb513202d81333, type: 3}
+      propertyPath: m_Size.y
+      value: 11.927577
+      objectReference: {fileID: 0}
+    - target: {fileID: 2262124281654824911, guid: 926a77cb280aaff469eb513202d81333, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.6945691
+      objectReference: {fileID: 0}
     - target: {fileID: 2840241335610147421, guid: 926a77cb280aaff469eb513202d81333, type: 3}
       propertyPath: m_Name
       value: CombatTrigger (1)

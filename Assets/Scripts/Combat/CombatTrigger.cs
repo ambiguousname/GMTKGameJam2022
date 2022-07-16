@@ -6,11 +6,14 @@ public class CombatTrigger : MonoBehaviour
 {
     bool _triggered = false;
     public List<GameObject> waves;
+    public GameObject teleportTo;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
         {
             FindObjectOfType<CombatController>().inCombat = false;
+
+            FindObjectOfType<CombatController>().teleportTo = teleportTo;
             if (!_triggered)
             {
                 FindObjectOfType<CombatController>().waves = waves;

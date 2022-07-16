@@ -9,6 +9,7 @@ public class CombatController : MonoBehaviour
     public List<GameObject> waves;
     private GameObject _wave;
     private int _index = 0;
+    public GameObject teleportTo;
 
     private void Update()
     {
@@ -26,7 +27,11 @@ public class CombatController : MonoBehaviour
                 inCombat = false;
                 _index = 0;
                 doors.SetActive(false);
+                if (teleportTo != null) {
+                    GameObject.FindGameObjectWithTag("Player").transform.position = teleportTo.transform.position;
+                }
                 FindObjectOfType<PlayerController>().fireEnabled = false;
+                FindObjectOfType<CombatUIManager>().Show(false);
             }
         }
         else if (inCombat) {
