@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
     public float fireForce = 500.0f;
     public float bulletDrag = 0;
     public float recoil = 0.1f;
+    public int ammo = 10;
     public GameObject bullet;
     public GameObject spread;
 
@@ -102,6 +103,16 @@ public class PlayerController : MonoBehaviour
 
     private void AttemptToFireWeapon() {
         if (_intendsToFire && _fireTimer <= 0.0f) {
+            
+            //placeholder ammo code just to show off UI
+            ammo--;
+
+            if (ammo == 0)
+            {
+                print("Reloading!");
+                ammo = 10;
+            }
+
             _fireTimer = fireDelay;
             EvaluateSpread();
             _intendsToFire = false;
