@@ -21,6 +21,10 @@ public class LoadoutController : MonoBehaviour
 
     public void Reload() {
         _activeIndex++;
+        if (_activeIndex > loadout.Count)
+        {
+            _activeIndex = 0;
+        }
         _activeWeapon = loadout[_activeIndex].Roll();
         _activeAttr = loadout[_activeIndex].attribute;
         stats[_activeWeapon].Equip();
