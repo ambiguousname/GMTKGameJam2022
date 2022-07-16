@@ -161,12 +161,18 @@ public class RollerManager : MonoBehaviour
     public void Roll() {
         if (_diceToRoll.Count > 0)
         {
-            // Remove from the inventory:
-            foreach (var dice in _diceToRoll)
+            var atLeastOne = _diceToRoll.Exists((dice) => {
+                return dice.faces != null;
+            });
+            if (atLeastOne)
             {
-                RemoveDie(dice);
+                // Remove from the inventory:
+                foreach (var dice in _diceToRoll)
+                {
+                    RemoveDie(dice);
+                }
+                _endCallback(_diceToRoll);
             }
-            _endCallback(_diceToRoll);
         }
     }
 
