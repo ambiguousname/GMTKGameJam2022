@@ -112,13 +112,21 @@ public class DialogueCreator : DialogueViewBase
             if (attribute.Name == "range")
             {
                 var range = attribute.Properties["range"].StringValue.Split(',');
+                int upper = 0;
+                if (range[1] == "inf")
+                {
+                    upper = int.MaxValue;
+                } else {
+                    upper = int.Parse(range[1]);   
+                }
+                
                 if (attribute.Properties.ContainsKey("attribute"))
                 {
-                    SetOption(Int16.Parse(range[0]), Int16.Parse(range[1]), attribute.Properties["attribute"].StringValue);
+                    SetOption(int.Parse(range[0]), upper, attribute.Properties["attribute"].StringValue);
                 }
                 else
                 {
-                    SetOption(Int16.Parse(range[0]), Int16.Parse(range[1]));
+                    SetOption(int.Parse(range[0]), upper);
                 }
             }
         }
