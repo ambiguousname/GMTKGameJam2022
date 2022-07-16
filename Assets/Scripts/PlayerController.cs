@@ -28,10 +28,13 @@ public class PlayerController : MonoBehaviour
     public int ammo = 10;
     public int maxAmmo = 10;
     public GameObject bullet;
+    public GameObject giantLaser;
     public GameObject spread;
     public bool fireFastAsTrigger = false;
+    public bool isGiantLaser = false;
     public float range = 1000f;
 
+    private GameObject _giantLaser;
     private GameObject _weapon;
     private GameObject _firePoint;
 
@@ -64,6 +67,8 @@ public class PlayerController : MonoBehaviour
 
         _defaultSprite = GetComponent<SpriteRenderer>().sprite;
         _defaultTint = GetComponent<SpriteRenderer>().color;
+        _giantLaser = Instantiate(giantLaser, _firePoint.transform);
+        _giantLaser.SetActive(false);
     }
 
     #region PhysicsUpdates
@@ -128,7 +133,6 @@ public class PlayerController : MonoBehaviour
 
     private void AttemptToFireWeapon() {
         if (_intendsToFire && _fireTimer <= 0.0f) {
-            
             //placeholder ammo code just to show off UI
             ammo--;
 
@@ -139,13 +143,22 @@ public class PlayerController : MonoBehaviour
             }
 
             _fireTimer = fireDelay;
-            EvaluateSpread();
-            _intendsToFire = false;
+            if (isGiantLaser)
+            {
+                _giantLaser.SetActive(true);
+            }
+            else
+            {
+                EvaluateSpread();
+            }
         }
 
         if (_fireTimer > 0.0f)
         {
             _fireTimer -= Time.fixedDeltaTime;
+            if (_fireTimer <= 0 && _giantLaser.activeInHierarchy) {
+                _giantLaser.SetActive(false);
+            }
         }
     }
 

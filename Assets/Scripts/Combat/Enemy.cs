@@ -80,7 +80,17 @@ public class Enemy : MonoBehaviour
     {
         if (collision.tag == "PlayerBullet") {
             health -= collision.GetComponent<Bullet>().damage;
-            Destroy(collision.gameObject);
+            if (collision.name != "GiantLaser")
+            {
+                Destroy(collision.gameObject);
+            }
+            StartCoroutine(HitPause());
+        }
+    }
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.name == "GiantLaser") {
+            health -= collision.GetComponent<Bullet>().damage;
             StartCoroutine(HitPause());
         }
     }

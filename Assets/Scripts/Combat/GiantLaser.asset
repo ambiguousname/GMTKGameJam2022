@@ -12,14 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1ee53e2551e33748bccf1865b57e206, type: 3}
   m_Name: GiantLaser
   m_EditorClassIdentifier: 
-  acceleration: 10
+  acceleration: 1
   bodyLookSpeed: 1
-  fireDelay: 0.1
+  fireDelay: 0.7
   fireForce: 500
   bulletDrag: 0
   recoil: 0.1
   damage: 50
   range: 1000
-  maxAmmo: 10
+  maxAmmo: 5
   spread: {fileID: 0}
+  isGiantLaser: 1
   fireFastAsTrigger: 0

@@ -18,6 +18,7 @@ public class Weapon : ScriptableObject
     public float range = 1000f;
     public int maxAmmo = 10;
     public GameObject spread;
+    public bool isGiantLaser = false;
     public bool fireFastAsTrigger = false;
     public void Equip() {
         var player = FindObjectOfType<PlayerController>();
@@ -33,5 +34,6 @@ public class Weapon : ScriptableObject
         player.spread = spread;
         player.fireFastAsTrigger = fireFastAsTrigger;
         player.range = range;
+        player.isGiantLaser = isGiantLaser;
     }
 }
