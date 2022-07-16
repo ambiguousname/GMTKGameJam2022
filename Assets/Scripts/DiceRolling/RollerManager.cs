@@ -11,6 +11,7 @@ public class RollerManager : MonoBehaviour
     public List<Dice> inventory = new List<Dice>();
     private HashSet<Dice> _uniqueDice = new HashSet<Dice>();
     private List<Dice> _diceToRoll;
+    private List<GameObject> _invRender;
 
     private GridLayoutGroup _rollBox;
 
@@ -87,6 +88,7 @@ public class RollerManager : MonoBehaviour
 
         foreach (Dice dice in _uniqueDice) {
             var newDie = Instantiate(diePrefab);
+            _invRender.Add(newDie);
             newDie.GetComponent<Image>().sprite = dice.attachedSprite;
             newDie.GetComponent<DiceDragAndDrop>().attachedDie = dice;
             newDie.transform.SetParent(_rollBox.transform, false);
@@ -97,6 +99,7 @@ public class RollerManager : MonoBehaviour
             });
             for (int i = 0; i < allDice.Count - 1; i++) {
                 var subDie = Instantiate(diePrefab);
+                _invRender.Add(subDie);
                 subDie.GetComponent<Image>().sprite = dice.attachedSprite;
                 subDie.GetComponent<DiceDragAndDrop>().attachedDie = dice;
                 subDie.transform.parent = transform;
@@ -120,6 +123,7 @@ public class RollerManager : MonoBehaviour
     public void EnableRolling(Action<int, string> callback)
     {
         _diceToRoll = new List<Dice>();
+        _invRender = new List<GameObject>();
         RenderDice();
         transform.GetChild(0).gameObject.SetActive(true);
         _endCallback = callback;
@@ -147,6 +151,10 @@ public class RollerManager : MonoBehaviour
 
     public void EndRolling(int outcome, string attribute)
     {
+        foreach (var item in _invRender) {
+            Destroy(item);
+        }
+        _invRender.Clear();
         _diceToRoll.Clear();
         transform.GetChild(0).gameObject.SetActive(false);
         _endCallback(outcome, attribute);
