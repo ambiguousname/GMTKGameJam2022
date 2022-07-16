@@ -6,9 +6,7 @@ using UnityEngine.EventSystems;
 public class DiceDragAndDrop : MonoBehaviour, IDragHandler, IEndDragHandler
 {
     //Dice Properties
-    public int minRange;
-    public int maxRange;
-    public string attribute;
+    public Dice attachedDie;
 
     //Drag and Drop Stuff
     [SerializeField]
@@ -17,15 +15,28 @@ public class DiceDragAndDrop : MonoBehaviour, IDragHandler, IEndDragHandler
     private RectTransform dragTransform;
     private Vector2 startingPos;
     private Vector3 velocity = Vector3.zero;
+    private RectTransform _targetTransform;
+
+    private bool _isBeingRolled = false;
+
+    private bool _firstMove = false;
 
     private void Awake()
     {
         dragTransform = transform as RectTransform;
-        startingPos = dragTransform.position;
+    }
+
+    private void Start()
+    {
+        _targetTransform = GameObject.Find("Drag Here Box").GetComponent<RectTransform>();
     }
 
     public void OnDrag(PointerEventData eventData)
     {
+        if (_firstMove == false) {
+            startingPos = dragTransform.position;
+            _firstMove = true;
+        }
         if (RectTransformUtility.ScreenPointToWorldPointInRectangle(dragTransform, eventData.
             position, eventData.pressEventCamera, out var globalMousePosition))
         {
@@ -36,12 +47,20 @@ public class DiceDragAndDrop : MonoBehaviour, IDragHandler, IEndDragHandler
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        if (dragTransform.position.y >= 100)
+        if (RectTransformUtility.RectangleContainsScreenPoint(_targetTransform, dragTransform.position))
         {
-            int dieResult = Random.Range(minRange, maxRange);
-            print("You rolled a " + dieResult + "!");
-            FindObjectOfType<RollerManager>().EndRolling(dieResult, attribute);
+            if (!_isBeingRolled)
+            {
+                _isBeingRolled = true;
+                FindObjectOfType<RollerManager>().AddDieToRoll(attachedDie);
+            }
+        }
+        else {
             dragTransform.position = startingPos;
+            if (_isBeingRolled) {
+                _isBeingRolled = false;
+                FindObjectOfType<RollerManager>().RemoveDiceFromRoll(attachedDie);
+            }
         }
     }
 }
