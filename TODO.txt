@@ -1,5 +1,3 @@
 - Firing at mouse is not exact (could be the cursor texture?)
 - Make recoil much more apparent (move the gun back first, then the player?)
-- Add spread
-- Player bullets shouldn't collide
-- Start bullets with rb disabled initially (to prevent early collisions)? Would replace initial offset of spread.
+- Fix bug where ending dialogue by clicking fires bullets.

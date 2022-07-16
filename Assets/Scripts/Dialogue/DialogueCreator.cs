@@ -28,6 +28,7 @@ public class DialogueCreator : DialogueViewBase
     private Action _dialogueFinished;
     private Action<int> _choiceFinished;
     private List<DialogueChoice> _choices;
+    private PlayerController _player;
 
     private void Awake()
     {
@@ -35,6 +36,17 @@ public class DialogueCreator : DialogueViewBase
         _conversation = this.gameObject.FindChildWithName("Conversation").GetComponent<Text>();
         _select = this.gameObject.FindChildWithName("Select").GetComponent<Text>();
         _choices = new List<DialogueChoice>();
+    }
+
+    private void OnEnable()
+    {
+        _player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        _player.onFire.AddListener(FireClick);
+    }
+
+    private void OnDisable()
+    {
+        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().onFire.RemoveListener(FireClick);
     }
 
     public void SetOption(int start, int end, string attribute="") {
@@ -57,17 +69,27 @@ public class DialogueCreator : DialogueViewBase
         }
         else {
             _select.text = _textToPrint;
+            ShowRolling();
         }
     }
 
-    public void ChooseOptions(int choice) {
-        _choiceFinished(choice);
+    public void ChooseOptions(int roll, string attribute) {
+        for (int i = 0; i < _choices.Count; i++) {
+            var choice = _choices[i];
+            if (attribute == choice.attribute && roll >= choice.lower && roll <= choice.upper) {
+                _choices.Clear();
+                _choiceFinished(i);
+                return;
+            }
+        }
         _choices.Clear();
+        Debug.LogError("No valid choices found for a roll of " + roll + " with Attribute: " + attribute + ".");
     }
 
     public override void DialogueStarted()
     {
         this.transform.GetChild(0).gameObject.SetActive(true);
+        _player.moveEnabled = false;
     }
 
     string EvaluateAttributes(List<Yarn.Markup.MarkupAttribute> attributes, string toAdd) {
@@ -104,11 +126,12 @@ public class DialogueCreator : DialogueViewBase
         _select.gameObject.SetActive(true);
         _select.text = "";
         _textToPrint = "";
-        foreach (var option in dialogueOptions) {
-            var toAdd = option.Line.TextWithoutCharacterName.Text + "\n";
+        for (int i = 0; i < dialogueOptions.Length; i++) {
+            var option = dialogueOptions[i];
+            var toAdd = option.Line.TextWithoutCharacterName.Text + ((i < dialogueOptions.Length - 1) ? "\n" : "");
             _textToPrint += EvaluateAttributes(option.Line.TextWithoutCharacterName.Attributes, toAdd);
         }
-        _activeTextPrint = AddText(_textToPrint, _select, textSpeed * 1.5f);
+        _activeTextPrint = AddText(_textToPrint, _select, textSpeed * 0.5f);
         _choiceFinished = onOptionSelected;
         StartCoroutine(_activeTextPrint);
     }
@@ -123,6 +146,13 @@ public class DialogueCreator : DialogueViewBase
         _activeTextPrint = AddText(_textToPrint, _conversation, textSpeed);
         _dialogueFinished = onDialogueLineFinished;
         StartCoroutine(_activeTextPrint);
+    }
+
+    void ShowRolling() {
+        var roller = FindObjectOfType<RollerManager>();
+        if (!roller.transform.GetChild(0).gameObject.activeInHierarchy) {
+            roller.EnableRolling(ChooseOptions);
+        }
     }
 
     IEnumerator AddText(string t, Text ui, float speed)
@@ -195,10 +225,15 @@ public class DialogueCreator : DialogueViewBase
 
         yield return new WaitForSeconds(0.1f * speed);
         _select.gameObject.SetActive(true);
+
+        if (_dialogueFinished == null) {
+            ShowRolling();
+        }
     }
 
     public override void DialogueComplete()
     {
         this.transform.GetChild(0).gameObject.SetActive(false);
+        _player.moveEnabled = true;
     }
 }

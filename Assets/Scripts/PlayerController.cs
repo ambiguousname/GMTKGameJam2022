@@ -1,11 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+    public bool moveEnabled = true;
+    [HideInInspector]
+    public UnityEvent onFire;
+
     [Header("Movement")]
     public float acceleration = 10.0f;
     public float mouseSensitivity = 1.0f;
@@ -64,11 +69,14 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         Cursor.SetCursor(cursorToUse, Vector2.zero, CursorMode.Auto);
-        _rigidbody.AddForce(_accelIntent * acceleration);
-        Vector2 screenPos = Mouse.current.position.ReadValue();
-        Vector3 mousePos = Camera.main.ScreenToWorldPoint(new Vector3(screenPos.x, screenPos.y, this.transform.position.y));
-        UpdateRotations(mousePos);
-        AttemptToFireWeapon();
+        if (moveEnabled)
+        {
+            _rigidbody.AddForce(_accelIntent * acceleration);
+            Vector2 screenPos = Mouse.current.position.ReadValue();
+            Vector3 mousePos = Camera.main.ScreenToWorldPoint(new Vector3(screenPos.x, screenPos.y, this.transform.position.y));
+            UpdateRotations(mousePos);
+            AttemptToFireWeapon();
+        }
     }
 
     void EvaluateSpread()
@@ -158,6 +166,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnFire(InputValue value) {
         _intendsToFire = (value.Get<float>() >= 0.5f) ? true : false;
+        onFire.Invoke();
     }
 
     #endregion

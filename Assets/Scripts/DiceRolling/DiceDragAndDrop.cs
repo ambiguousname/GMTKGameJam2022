@@ -8,6 +8,7 @@ public class DiceDragAndDrop : MonoBehaviour, IDragHandler, IEndDragHandler
     //Dice Properties
     public int minRange;
     public int maxRange;
+    public string attribute;
 
     //Drag and Drop Stuff
     [SerializeField]
@@ -39,6 +40,7 @@ public class DiceDragAndDrop : MonoBehaviour, IDragHandler, IEndDragHandler
         {
             int dieResult = Random.Range(minRange, maxRange);
             print("You rolled a " + dieResult + "!");
+            FindObjectOfType<RollerManager>().EndRolling(dieResult, attribute);
             dragTransform.position = startingPos;
         }
     }
