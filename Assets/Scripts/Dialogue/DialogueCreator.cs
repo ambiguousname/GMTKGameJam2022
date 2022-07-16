@@ -54,22 +54,26 @@ public class DialogueCreator : DialogueViewBase
     }
 
     public void FireClick() {
-        StopCoroutine(_activeTextPrint);
-        if (_dialogueFinished != null)
+        if (_activeTextPrint != null)
         {
-            if (_select.gameObject.activeInHierarchy)
+            StopCoroutine(_activeTextPrint);
+            if (_dialogueFinished != null)
             {
-                _dialogueFinished();
+                if (_select.gameObject.activeInHierarchy)
+                {
+                    _dialogueFinished();
+                }
+                else
+                {
+                    _conversation.text = _textToPrint;
+                    _select.gameObject.SetActive(true);
+                }
             }
             else
             {
-                _conversation.text = _textToPrint;
-                _select.gameObject.SetActive(true);
+                _select.text = _textToPrint;
+                ShowRolling();
             }
-        }
-        else {
-            _select.text = _textToPrint;
-            ShowRolling();
         }
     }
 
