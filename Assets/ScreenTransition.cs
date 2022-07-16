@@ -14,6 +14,8 @@ public class ScreenTransition : MonoBehaviour
     {
         height = cam.orthographicSize * 2;
         width = height * cam.aspect;
+        print(height);
+        print(width);
     }
 
     // Update is called once per frame
