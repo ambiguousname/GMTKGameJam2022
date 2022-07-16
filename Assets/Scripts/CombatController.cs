@@ -14,10 +14,20 @@ public class CombatController : MonoBehaviour
     {
         if (inCombat && _wave != null && _wave.transform.childCount <= 0)
         {
-            inCombat = false;
-            _index = 0;
-            doors.SetActive(false);
-            FindObjectOfType<PlayerController>().fireEnabled = false;
+            if (_index < waves.Count - 1)
+            {
+                _index++;
+                _wave.SetActive(false);
+                _wave = waves[_index];
+                _wave.SetActive(true);
+            }
+            else
+            {
+                inCombat = false;
+                _index = 0;
+                doors.SetActive(false);
+                FindObjectOfType<PlayerController>().fireEnabled = false;
+            }
         }
         else if (inCombat) {
             doors.SetActive(true);
