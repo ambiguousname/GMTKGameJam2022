@@ -89,6 +89,8 @@ public class Enemy : MonoBehaviour
         GetComponent<SpriteRenderer>().sprite = damageSprite;
         GetComponent<SpriteRenderer>().color = Color.white;
         Time.timeScale = 0;
+        FindObjectOfType<Shake>().shake = 0.2f;
+        FindObjectOfType<Shake>().shakeAmount = hitTimer;
         yield return new WaitForSecondsRealtime(hitTimer);
         Time.timeScale = 1;
         GetComponent<SpriteRenderer>().sprite = _defaultSprite;

@@ -107,6 +107,8 @@ public class PlayerController : MonoBehaviour
         Time.timeScale = 0;
         GetComponent<SpriteRenderer>().sprite = damageSprite;
         GetComponent<SpriteRenderer>().color = Color.white;
+        FindObjectOfType<Shake>().shakeAmount = damagePauseTimer;
+        FindObjectOfType<Shake>().shake = 0.2f;
         yield return new WaitForSecondsRealtime(damagePauseTimer);
         GetComponent<SpriteRenderer>().sprite = _defaultSprite;
         GetComponent<SpriteRenderer>().color = _defaultTint;
