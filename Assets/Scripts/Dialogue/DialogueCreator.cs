@@ -94,6 +94,7 @@ public class DialogueCreator : DialogueViewBase
     {
         this.transform.GetChild(0).gameObject.SetActive(true);
         _player.moveEnabled = false;
+        FindObjectOfType<CombatUIManager>().Show(false);
     }
 
     string EvaluateAttributes(List<Yarn.Markup.MarkupAttribute> attributes, string toAdd) {
@@ -239,5 +240,6 @@ public class DialogueCreator : DialogueViewBase
     {
         this.transform.GetChild(0).gameObject.SetActive(false);
         _player.moveEnabled = true;
+        FindObjectOfType<CombatUIManager>().Show(true);
     }
 }
