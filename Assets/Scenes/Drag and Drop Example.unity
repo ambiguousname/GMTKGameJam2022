@@ -325,7 +325,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minRange: 1
-  maxRange: 6
+  maxRange: 7
   dampingSpeed: 0.02
 --- !u!114 &650230015
 MonoBehaviour:
@@ -752,6 +752,8 @@ MonoBehaviour:
       m_Flags: 0
     m_Flags: 0
   mouseDragSpeed: 0.1
+  mainCamera: {fileID: 0}
+  velocity: {x: 0, y: 0}
 --- !u!4 &1995399901
 Transform:
   m_ObjectHideFlags: 0
