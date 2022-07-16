@@ -23,6 +23,7 @@ public class Enemy : MonoBehaviour
     public float fireDelay = 2;
     public float rotateSpeed = 1;
     public float minDistFromPlayer = 10;
+    public float range = 50f;
 
     private GameObject _firePoint;
     private GameObject _player;
@@ -49,11 +50,6 @@ public class Enemy : MonoBehaviour
         _ai.onSearchPath -= FixedUpdate;
     }
 
-    private void OnBecameVisible()
-    {
-        FindObjectOfType<CombatController>().enemies.Add(this);
-    }
-
     void EvaluateSpread()
     {
         // For each bullet in the spread:
@@ -66,6 +62,7 @@ public class Enemy : MonoBehaviour
             // To avoid close collisions, we add the 
             var fired = Instantiate(bullet, _firePoint.transform.position + newPos.normalized * 0.1f, rotation);
             fired.GetComponent<Bullet>().damage = damage;
+            fired.GetComponent<Bullet>().range = range;
             Physics2D.IgnoreCollision(GetComponent<Collider2D>(), fired.GetComponent<Collider2D>(), true);
 
             var rb = fired.GetComponent<Rigidbody2D>();
@@ -111,36 +108,32 @@ public class Enemy : MonoBehaviour
         GetComponent<SpriteRenderer>().sprite = _defaultSprite;
         GetComponent<SpriteRenderer>().color = _defaultTint;
         if (health <= 0) {
-            FindObjectOfType<CombatController>().enemies.Remove(this);
             Destroy(this.gameObject);
         }
     }
 
     void FixedUpdate()
     {
-        if (FindObjectOfType<CombatController>().inCombat)
+        var playerDir = _player.transform.position - this.transform.position;
+        var hit = Physics2D.Raycast(this.transform.position, playerDir);
+        if (hit.transform.tag == "Player")
         {
-            var playerDir = _player.transform.position - this.transform.position;
-            var hit = Physics2D.Raycast(this.transform.position, playerDir);
-            if (hit.transform.tag == "Player")
+            if (_fireTimer <= 0 && Vector3.Dot(this.transform.up, _player.transform.position) > 0)
             {
-                if (_fireTimer <= 0 && Vector3.Dot(this.transform.up, _player.transform.position) > 0)
-                {
-                    _fireTimer = fireDelay;
-                    EvaluateSpread();
-                }
-
-                this.transform.rotation = Quaternion.Slerp(this.transform.rotation, Quaternion.LookRotation(Vector3.forward, playerDir), rotateSpeed * Time.fixedDeltaTime);
+                _fireTimer = fireDelay;
+                EvaluateSpread();
             }
 
-            if (_fireTimer > 0)
-            {
-                _fireTimer -= Time.fixedDeltaTime;
-            }
-
-            var distFromPlayer = -(playerDir.normalized * minDistFromPlayer) + _player.transform.position;
-
-            _ai.destination = distFromPlayer;
+            this.transform.rotation = Quaternion.Slerp(this.transform.rotation, Quaternion.LookRotation(Vector3.forward, playerDir), rotateSpeed * Time.fixedDeltaTime);
         }
+
+        if (_fireTimer > 0)
+        {
+            _fireTimer -= Time.fixedDeltaTime;
+        }
+
+        var distFromPlayer = -(playerDir.normalized * minDistFromPlayer) + _player.transform.position;
+
+        _ai.destination = distFromPlayer;
     }
 }
