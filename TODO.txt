@@ -3,3 +3,4 @@
 - Fix bug where ending dialogue by clicking fires bullets.
 - Add drag + drop for multiple dice
 - Add exit button
+- Bullets don't go on top of tiles
