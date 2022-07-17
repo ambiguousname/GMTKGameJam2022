@@ -107,6 +107,7 @@ public class RollerManager : MonoBehaviour
                 subDie.GetComponent<DiceDragAndDrop>().attachedDie = dice;
                 subDie.transform.parent = transform;
                 subDie.GetComponent<RectTransform>().sizeDelta = new Vector2(_rollBox.cellSize.x, _rollBox.cellSize.y);
+                subDie.transform.localScale = Vector3.one;
                 StartCoroutine(SetDieParent(subDie.transform, new Vector3(-(i + 1) * 5, -(i + 1) * 5), newDie.transform));
             }
         }
