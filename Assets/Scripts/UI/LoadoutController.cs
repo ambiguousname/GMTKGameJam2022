@@ -27,6 +27,10 @@ public class LoadoutController : MonoBehaviour
             FindObjectOfType<CombatUIManager>().transform.GetChild(0).GetChild(0).GetChild(0).GetChild(1).GetComponent<Image>().sprite = Resources.Load<Sprite>("Dice Assets/" + (loadout[_activeIndex].attribute != "" ? loadout[_activeIndex].attribute : "white") + "_Die_" + (_activeWeapon + 1));
             stats[_activeWeapon].Equip();
             _activeIndex++;
+            if (_activeIndex >= loadout.Count)
+            {
+                _activeIndex = 0;
+            }
             transform.GetChild(0).gameObject.SetActive(false);
             FindObjectOfType<CombatUIManager>().Show(true);
             FindObjectOfType<RollerManager>().EndRolling();
