@@ -102,7 +102,7 @@ public class DialogueCreator : DialogueViewBase
             {
                 var toInsertBegin = "";
                 var toInsertEnd = "";
-                var beginOffset = 0;
+                var beginOffset = offset;
                 var endOffset = 0;
                 if (attribute.Properties.ContainsKey("color"))
                 {
@@ -110,16 +110,15 @@ public class DialogueCreator : DialogueViewBase
                     toInsertBegin += colorTag;
                     beginOffset += colorTag.Length;
 
-                    toInsertEnd += "</color>";
+                    toInsertEnd = "</color>" + toInsertEnd;
                     endOffset += "</color>".Length;
-                }
-                if (attribute.Properties.ContainsKey("italics")) {
+                } else if (attribute.Properties.ContainsKey("italics")) {
                     toInsertBegin += "<i>";
                     beginOffset += 3;
-                    toInsertEnd += "</i>";
+                    toInsertEnd = "</i>" + toInsertEnd;
                     endOffset += 4;
                 }
-                toAdd = toAdd.Insert(attribute.Position, toInsertBegin);
+                toAdd = toAdd.Insert(attribute.Position + offset, toInsertBegin);
                 toAdd = toAdd.Insert(attribute.Position + attribute.Length + beginOffset, toInsertEnd);
                 offset += beginOffset + endOffset;
             }
