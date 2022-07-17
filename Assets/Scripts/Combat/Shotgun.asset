@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1ee53e2551e33748bccf1865b57e206, type: 3}
   m_Name: Shotgun
   m_EditorClassIdentifier: 
+  sprite: {fileID: 21300000, guid: c737ad3db82b2ca4187940f3e3b3ecf2, type: 3}
   acceleration: 10
   bodyLookSpeed: 1
   fireDelay: 0.5
@@ -22,4 +23,5 @@ MonoBehaviour:
   range: 5
   maxAmmo: 24
   spread: {fileID: 8049259488411827246, guid: 9e6d53a78fd85d345aac52f425ec2a6b, type: 3}
+  isGiantLaser: 0
   fireFastAsTrigger: 0

@@ -5,6 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Weapon", menuName = "ScriptableObjects/Weapon")]
 public class Weapon : ScriptableObject
 {
+    public Sprite sprite;
+
     [Header("Movement")]
     public float acceleration = 10.0f;
     public float bodyLookSpeed = 1.0f;
@@ -35,5 +37,6 @@ public class Weapon : ScriptableObject
         player.fireFastAsTrigger = fireFastAsTrigger;
         player.range = range;
         player.isGiantLaser = isGiantLaser;
+        player.transform.GetChild(0).GetChild(1).GetComponent<SpriteRenderer>().sprite = sprite;
     }
 }
