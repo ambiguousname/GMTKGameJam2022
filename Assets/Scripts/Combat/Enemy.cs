@@ -31,6 +31,10 @@ public class Enemy : MonoBehaviour
     public float minDistFromPlayer = 10;
     public float range = 50f;
 
+
+    [Header("Animation")]
+    public SpriteAnimator animator;
+
     private GameObject _firePoint;
     private GameObject _player;
     private Rigidbody2D _rigidbody;
@@ -145,6 +149,7 @@ public class Enemy : MonoBehaviour
             }
         }
 
+
         if (_frozenTimer <= 0)
         {
             this.transform.rotation = Quaternion.Slerp(this.transform.rotation, Quaternion.LookRotation(Vector3.forward, playerDir), rotateSpeed * Time.fixedDeltaTime);
@@ -172,6 +177,20 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
+
+        if(_rigidbody.velocity.x > 0)
+        {
+            transform.localScale = new Vector3(1, 1, 1);
+            animator.playAnimation(animator.runRight, .4f);
+        } else if (_rigidbody.velocity.x < 0)
+        {
+            transform.localScale = new Vector3(-1, 1, 1);
+            animator.playAnimation(animator.runRight, .4f);
+        } else
+        {
+            animator.playAnimation(animator.idle, .4f);
+        }
+
         if (_onFireTimer > 0)
         {
             _onFireTimer -= Time.deltaTime;
