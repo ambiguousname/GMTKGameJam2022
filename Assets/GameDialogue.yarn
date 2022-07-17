@@ -51,7 +51,7 @@ Shady Feller: [style italics=true color="c7c7c7"]*Ahem*.[/style] [style color="c
 title: OldCaptain
 ---
 Old Captain: [style color="99009A"]A-ha there, my fellow.[/style]
-Old Captain: [style color="99009A"]These seas be rougher than the barnacles on me back-side. But, I be a land lubber from eer on out. Nasty termites in me leg.[/style]
+Old Captain: [style color="99009A"]These seas be rougher than the barnacles on me back-side. But, I be a land lubber from 'eere on out. Nasty termites in me leg.[/style]
 Old Captain: [style color="99009A"]Tell you what. Ye win my game, and I'll grant you my lucky charm. Fail...[/style]
 Old Captain: [style color="99009A"]Well, the crushed look on yer face is all I need for when you lose.[/style]
 -> 1-12 - No dice![range="1,12"/]
@@ -79,4 +79,16 @@ title: Chest3
 Searching the chest, you find...
 (2) [style color="0000ff"]ice three sided die![/style]
 <<SetDie "ThreeIce">>
+===
+title: BobJones
+---
+Bob Jones: [style color="B75300"]Ho there! Would you happen to be cursed like me? Ya see, I have an identical twin.[/style]
+Bob Jones: [style color="B75300"]Oh, poor Davvy! If only he were okay...[/style]
+<<set $meetDavvy to true>>
+===
+title: NegativeOne
+---
+Negative One: [style color="0E00B7"]I was cursed to have a ridiculous nickname.[/style]
+Negative One: [style color="0E00B7"]I wanted to be something cool, like "Number One", or "Number Two". I bet ya half of the people on these isles don't even negative from positive.[/style]
+Negative One: [style color="0E00B7"]If only we could do something about my damn...! But there are so many guns out east, it's not worth trying.[/style]
 ===
