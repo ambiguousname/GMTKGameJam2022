@@ -4,4 +4,5 @@
 - Dice rolling anims
 - Menu in and out anims
 - Add helper text
-- Win Screen
+- Fix hit pause to be less intense
+- Fix screen shake to be when you fire gun

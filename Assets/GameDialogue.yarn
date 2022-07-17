@@ -2,214 +2,214 @@
 tags:
 ---
 <<declare $meetDavey = false as bool>>
-The Right Honorable Good Captain: [style color="ff8000"] Ahoy there, good sire! Ye might call me the Right Honorable Good Captain of these faire aisles melass.[/style]
-The Right Honorable Good Captain: [style color="ff8000"] What's that ye scallywag? Ah, an enchanted sea witch hath stolen yon voice? [/style]
-The Right Honorable Good Captain: [style color="ff8000"] Prithee listen, I understand yer per-dic-a-ment. I were cursed by great wizerd to alternate speaking styles. [/style]
--> 1-5 - Ask the Right Honorable Good Captain what exactly he's talking about. [range="1,5"/]
--> 6-12+ - Ask the Right Honorable Good Captain what exactly he's talking about, in a [style italics=true] fancy [/style] way. [range="6,inf"/]
-    The Right Honorable Good Captain: [style color="ff8000"] Color me appalled! Dismayed! How intriguing. [/style]
-    You get (1) regular six sided die.
+The Right Honorable Good Captain: [style color="ff8000"] Ahoy there, good sire! Ye might call me the Right Honorable Good Captain of these faire aisles melass.[/style] #line:03ae3a8 
+The Right Honorable Good Captain: [style color="ff8000"] What's that ye scallywag? Ah, an enchanted sea witch hath stolen yon voice? [/style] #line:0da1f24 
+The Right Honorable Good Captain: [style color="ff8000"] Prithee listen, I understand yer per-dic-a-ment. I were cursed by great wizerd to alternate speaking styles. [/style] #line:0f452c4 
+-> 1-5 - Ask the Right Honorable Good Captain what exactly he's talking about. [range="1,5"/] #line:0724926 
+-> 6-12+ - Ask the Right Honorable Good Captain what exactly he's talking about, in a [style italics=true] fancy [/style] way. [range="6,inf"/] #line:042cb80 
+    The Right Honorable Good Captain: [style color="ff8000"] Color me appalled! Dismayed! How intriguing. [/style] #line:0a653f9 
+    You get (1) regular six sided die. #line:0827ce9 
     <<SetDie "Basic">>
 
-The Right Honorable Good Captain: [style color="ff8000"]I be shocked that yer able to speak! But ahh, what's this?[/style]
-The Right Honorable Good Captain: [style color="ff8000"]Yon tongue appears to be functioning in a correct manner after all, you salty scallywag![/style]
-The Right Honorable Good Captain: [style color="ff8000"]Then there may be hope for you yet, if ye wish to undo yer curse, traverse these aisles, and confront those that be holdin' yer voice hostage...[/style]
-The Right Honorable Good Captain: [style color="ff8000"]All ye need do is walk to the right! It be that simple![/style]
-The Right Honorable Good Captain: [style italics=true]cough.[/style] [style color="ff8000"]Ehh... Ah! Yes, you'll be requiring some more dice. Here ya go! Full starter's set... Mostly.[/style]
-You get (1) regular three sided die.
+The Right Honorable Good Captain: [style color="ff8000"]I be shocked that yer able to speak! But ahh, what's this?[/style] #line:0e2299d 
+The Right Honorable Good Captain: [style color="ff8000"]Yon tongue appears to be functioning in a correct manner after all, you salty scallywag![/style] #line:039fe41 
+The Right Honorable Good Captain: [style color="ff8000"]Then there may be hope for you yet, if ye wish to undo yer curse, traverse these aisles, and confront those that be holdin' yer voice hostage...[/style] #line:0b282fd 
+The Right Honorable Good Captain: [style color="ff8000"]All ye need do is walk to the right! It be that simple![/style] #line:060377b 
+The Right Honorable Good Captain: [style italics=true]cough.[/style] [style color="ff8000"]Ehh... Ah! Yes, you'll be requiring some more dice. Here ya go! Full starter's set... Mostly.[/style] #line:0c7bb9d 
+You get (1) regular three sided die. #line:01b66d0 
 <<SetDie "Three">>
 ===
 title: Fisherman
 tags:
 ---
-Fish wrangler: [style color="008080"] Ahoy there, fellow sailor! They just don't seem to be biting for me t'day.[/style]
--> 1-3 - Laugh at their poor luck.[range="1,3"/]
-    Fish wrangler: [style color="008080"]Yer lucky I don't have hands to strangle yer bare hand with. They were taken from me by my grandmamy when she threw me into a pit o' sharks.[/style]
--> 4-12+ - Le'me give it a try.[range="4,inf"/]
-    [style italics=true]He casts his great fishing rod out into yonder sea...[/style] [style italics=true]nibble[/style] [style italics=true]nibble[/style] [style italics=true]tug[/style] YaHA! OH! It be a die.
-    You get (1) [style color="0000ff"]ice six sided die[/style].
+Fish wrangler: [style color="008080"] Ahoy there, fellow sailor! They just don't seem to be biting for me t'day.[/style] #line:0fb614e 
+-> 1-3 - Laugh at their poor luck.[range="1,3"/] #line:095536a 
+    Fish wrangler: [style color="008080"]Yer lucky I don't have hands to strangle yer bare hand with. They were taken from me by my grandmamy when she threw me into a pit o' sharks.[/style] #line:0b52f6c 
+-> 4-12+ - Le'me give it a try.[range="4,inf"/] #line:01497f5 
+    [style italics=true]He casts his great fishing rod out into yonder sea...[/style] [style italics=true]nibble[/style] [style italics=true]nibble[/style] [style italics=true]tug[/style] YaHA! OH! It be a die. #line:033a3b2 
+    You get (1) [style color="0000ff"]ice six sided die[/style]. #line:0d12adb 
     <<SetDie "BasicIce">>
--> [style color="ff0000"]2-4+ - Boil the sea. [/style] [range range="4,inf" attribute="fire"/]
-    Fish wrangler: [style color="008080"]Wow, ye sher made short work of an entire mass of water.[/style]
-    Fish wrangler: [style color="008080"]I be surprised ye haven't been arrested for violatin' the laws of thermodynamics.[/style]
-    Fish wrangler: [style color="008080"]Oh well! Here be more fish fer you.[/style]
-    You get (2) [style color="0000ff"]ice six sided dice[/style].
+-> [style color="ff0000"]2-4+ - Boil the sea. [/style] [range range="4,inf" attribute="fire"/] #line:0abb878 
+    Fish wrangler: [style color="008080"]Wow, ye sher made short work of an entire mass of water.[/style] #line:02d42ae 
+    Fish wrangler: [style color="008080"]I be surprised ye haven't been arrested for violatin' the laws of thermodynamics.[/style] #line:0094cd7 
+    Fish wrangler: [style color="008080"]Oh well! Here be more fish fer you.[/style] #line:069fbce 
+    You get (2) [style color="0000ff"]ice six sided dice[/style]. #line:0762a27 
     <<SetDie "BasicIce">>
     <<SetDie "BasicIce">>
 ===
 title: Shady
 ---
-Shady Feller: [style color="c7c7c7"] Step right up all ye cursed souls! You especially. What's wrong with your face?
-Shady Feller: [style italics=true]*Ahem*.[/style] [style color="c7c7c7"]It's fine. You're good. Want to play me in a game of shells?[/style]
--> 1-12+ - You have a go. [range="1,inf"/]
-    Shady Feller: [style color="c7c7c7"]Sorry, rotten luck! Better luck next time, fool![/style]
--> [style color="0000ff"] 3-12+ - You have a go. [/style][range range="3,inf" attribute="ice"/]
-    Shady Feller: [style color="c7c7c7"] Wh- you cheated! You no good backstabbing...[/style]
-    Shady Feller: [style color="c7c7c7"] I don't e'er want to see you again.[/style]
-    You get a trick die! It only rolls fives or sixes!
+Shady Feller: [style color="c7c7c7"] Step right up all ye cursed souls! You especially. What's wrong with your face? #line:0e72171 
+Shady Feller: [style italics=true]*Ahem*.[/style] [style color="c7c7c7"]It's fine. You're good. Want to play me in a game of shells?[/style] #line:004a3c1 
+-> 1-12+ - You have a go. [range="1,inf"/] #line:0e395c6 
+    Shady Feller: [style color="c7c7c7"]Sorry, rotten luck! Better luck next time, fool![/style] #line:048d669 
+-> [style color="0000ff"] 3-12+ - You have a go. [/style][range range="3,inf" attribute="ice"/] #line:0fe6274 
+    Shady Feller: [style color="c7c7c7"] Wh- you cheated! You no good backstabbing...[/style] #line:0f502c9 
+    Shady Feller: [style color="c7c7c7"] I don't e'er want to see you again.[/style] #line:02db02d 
+    You get a trick die! It only rolls fives or sixes! #line:0b1db5a 
     <<SetDie "TrickDie">>
 ===
 title: OldCaptain
 ---
-Old Captain: [style color="99009A"]A-ha there, my fellow.[/style]
-Old Captain: [style color="99009A"]These seas be rougher than the barnacles on me back-side. But, I be a land lubber from 'eere on out. Nasty termites in me leg.[/style]
-Old Captain: [style color="99009A"]Tell you what. Ye win my game, and I'll grant you my lucky charm. Fail...[/style]
-Old Captain: [style color="99009A"]Well, the crushed look on yer face is all I need for when you lose.[/style]
--> 1-12 - No dice![range="1,12"/]
-    Old Captain: [style color="99009A"]AHAHAH! It was as good as I imagined. I'll be takin' 'em dice too.[/style]
--> 13+ - You win![range="13,inf"/]
-    Old Captain: [style color="99009A"]Rats! I hope you die from a fungus infection.[/style]
-    You get (2) [style color="ff0000"]fire six sided dice.[/style]
+Old Captain: [style color="99009A"]A-ha there, my fellow.[/style] #line:0315747 
+Old Captain: [style color="99009A"]These seas be rougher than the barnacles on me back-side. But, I be a land lubber from 'eere on out. Nasty termites in me leg.[/style] #line:08e0f04 
+Old Captain: [style color="99009A"]Tell you what. Ye win my game, and I'll grant you my lucky charm. Fail...[/style] #line:024bebb 
+Old Captain: [style color="99009A"]Well, the crushed look on yer face is all I need for when you lose.[/style] #line:0bf10ca 
+-> 1-12 - No dice![range="1,12"/] #line:0d67cb8 
+    Old Captain: [style color="99009A"]AHAHAH! It was as good as I imagined. I'll be takin' 'em dice too.[/style] #line:0ad802c 
+-> 13+ - You win![range="13,inf"/] #line:0489fb8 
+    Old Captain: [style color="99009A"]Rats! I hope you die from a fungus infection.[/style] #line:061f02b 
+    You get (2) [style color="ff0000"]fire six sided dice.[/style] #line:0f1dc04 
     <<SetDie "BasicFire">>
     <<SetDie "BasicFire">>
 ===
 title: Chest1
 ---
-Searching the chest, you find...
-(1) Six sided die!
+Searching the chest, you find... #line:02a31a2 
+(1) Six sided die! #line:0c51dd8 
 <<SetDie "Basic">>
 ===
 title: Chest2
 ---
-Searching the chest, you find...
-(1) [style color="ff0000"]fire three sided die![/style]
+Searching the chest, you find... #line:03e3237 
+(1) [style color="ff0000"]fire three sided die![/style] #line:0bfb2f4 
 <<SetDie "ThreeFire">>
 ===
 title: Chest3
 ---
-Searching the chest, you find...
-(2) [style color="0000ff"]ice three sided die![/style]
+Searching the chest, you find... #line:0967ecf 
+(2) [style color="0000ff"]ice three sided die![/style] #line:01e2c84 
 <<SetDie "ThreeIce">>
 ===
 title: BobJones
 ---
-Bob Jones: [style color="B75300"]Ho there! Would you happen to be cursed like me? Ya see, I have an identical twin.[/style]
-Bob Jones: [style color="B75300"]Oh, poor Davey! If only he were okay...[/style]
+Bob Jones: [style color="B75300"]Ho there! Would you happen to be cursed like me? Ya see, I have an identical twin.[/style] #line:0e00f4c 
+Bob Jones: [style color="B75300"]Oh, poor Davey! If only he were okay...[/style] #line:020d79f 
 <<set $meetDavey to true>>
 ===
 title: NegativeOne
 ---
-Negative One: [style color="0E00B7"]I was cursed to have a ridiculous nickname.[/style]
-Negative One: [style color="0E00B7"]I wanted to be something cool, like "Number One", or "Number Two". I bet ya half of the people on these isles don't even negative from positive.[/style]
-Negative One: [style color="0E00B7"]If only we could do something about my damn...! But there are so many guns out east, it's not worth trying.[/style]
+Negative One: [style color="0E00B7"]I was cursed to have a ridiculous nickname.[/style] #line:0f4d542 
+Negative One: [style color="0E00B7"]I wanted to be something cool, like "Number One", or "Number Two". I bet ya half of the people on these isles don't even negative from positive.[/style] #line:08bf831 
+Negative One: [style color="0E00B7"]If only we could do something about my damn...! But there are so many guns out east, it's not worth trying.[/style] #line:060323c 
 ===
 title: UnshadyFellow
 ---
-Unshady Fellow: [style color="c7c7c7"]How's it going my goodpirate? I can guarantee you that this game is not at all unfair.[/style]
-Unshady Fellow: [style color="c7c7c7"]Just keep your eye on the ball![/style]
-Unshady Fellow: [style italics=true]Shuffles in an unshady fashion.[/style]
--> 1-3 - Pick Left Cup[range="1,2"/]
-    Unshady Fellow: [style color="c7c7c7"]Sorry, it was the middle one![/style]
--> 3-4 - Pick Middle Cup[range="3,4"/]
-    Unshady Fellow: [style color="c7c7c7"]Nice going![/style]
-    You get (1) [style color="ff0000"]fire six sided dice[/style].
+Unshady Fellow: [style color="c7c7c7"]How's it going my goodpirate? I can guarantee you that this game is not at all unfair.[/style] #line:08e958f 
+Unshady Fellow: [style color="c7c7c7"]Just keep your eye on the ball![/style] #line:05194f9 
+Unshady Fellow: [style italics=true]Shuffles in an unshady fashion.[/style] #line:013c9f2 
+-> 1-3 - Pick Left Cup[range="1,2"/] #line:03196d1 
+    Unshady Fellow: [style color="c7c7c7"]Sorry, it was the middle one![/style] #line:0702355 
+-> 3-4 - Pick Middle Cup[range="3,4"/] #line:07e289c 
+    Unshady Fellow: [style color="c7c7c7"]Nice going![/style] #line:08b27b4 
+    You get (1) [style color="ff0000"]fire six sided dice[/style]. #line:03e27bf 
     <<SetDie "BasicFire">>
--> 5-6 - Pick Right Cup[range="5,6"/]
-    Unshady Fellow: [style color="c7c7c7"]Sorry, it was the middle one![/style]
--> 7+ - Don't pick any. You are wise. You are strong.[range="7,inf"/]
-    Unshady Fellow: [style color="c7c7c7"]Here, have my[/style] (1) normal three sided die[style="c7c7c7"], I guess.[/style]
+-> 5-6 - Pick Right Cup[range="5,6"/] #line:0c2be32 
+    Unshady Fellow: [style color="c7c7c7"]Sorry, it was the middle one![/style] #line:039a680 
+-> 7+ - Don't pick any. You are wise. You are strong.[range="7,inf"/] #line:0e3c728 
+    Unshady Fellow: [style color="c7c7c7"]Here, have my[/style] (1) normal three sided die[style="c7c7c7"], I guess.[/style] #line:044fb78 
     <<SetDie "Three">>
 ===
 title: FellowStranded
 ---
-Fellow Island Hopper: [style color="D96304"]Looks like you, like myself, are stuck on the next island.[/style]
-Fellow Island Hopper: [style color="D96304"]But don't worry! Since this game was made in 48 hours, the devs only had time to make one more island.[/style]
-Fellow Island Hopper: [style color="D96304"]That's this island.[/style]
+Fellow Island Hopper: [style color="D96304"]Looks like you, like myself, are stuck on the next island.[/style] #line:084d2cf 
+Fellow Island Hopper: [style color="D96304"]But don't worry! Since this game was made in 48 hours, the devs only had time to make one more island.[/style] #line:0ae5c20 
+Fellow Island Hopper: [style color="D96304"]That's this island.[/style] #line:0966456 
 ===
 title: DaveyJones
 ---
 <<if $meetDavey>>
-    Davey Jones: [style color="B75300"]Oh, you met my bruther Bobby! That's great![/style]
-    Davey Jones:[style color="B75300"]I wonder if there's a way to get back to that other island...[/style]
-    Davey Jones:[style color="B75300"]Oh well, take this as a token of my thanks![/style]
-    You got (1) [style color="0000ff"]ice six sided die[/style]!
+    Davey Jones: [style color="B75300"]Oh, you met my bruther Bobby! That's great![/style] #line:08d57cb 
+    Davey Jones:[style color="B75300"]I wonder if there's a way to get back to that other island...[/style] #line:0d6a293 
+    Davey Jones:[style color="B75300"]Oh well, take this as a token of my thanks![/style] #line:0d642a0 
+    You got (1) [style color="0000ff"]ice six sided die[/style]! #line:0deb2b4 
     <<SetDie "BasicIce">>
 <<else>>
-    Davey Jones: [style color="B75300"]Go ahead. Make a joke. I've heard them all.[/style]
+    Davey Jones: [style color="B75300"]Go ahead. Make a joke. I've heard them all.[/style] #line:06717c8 
 <<endif>>
 ===
 title: NPC3
 ---
-NPC Number Three: HI THERE! I AM A FULLY FUNCTIONING ADULT!
-NPC Number Three: I SURE ENJOY MY NORMAL AND/OR HUMAN LIFE THAT REQUIRES ME TO SIT IN A SPECIFIC SPOT UNTIL THE END OF TIME ITSELF!
-NPC Number Three: I AM UNMOVING AND UNFLINCHING, AND I ENJOY EVERY SECOND OF IT!
-NPC Number Three: MY EYE JUST TRIED TO TWITCH! IT DOESN'T MATTER! I CAN'T MOVE MY FACE PROPERLY!
-NPC Number Three: ARR MATEY! I BE A PIRATE!
+NPC Number Three: HI THERE! I AM A FULLY FUNCTIONING ADULT! #line:0eb03f9 
+NPC Number Three: I SURE ENJOY MY NORMAL AND/OR HUMAN LIFE THAT REQUIRES ME TO SIT IN A SPECIFIC SPOT UNTIL THE END OF TIME ITSELF! #line:06f3ab0 
+NPC Number Three: I AM UNMOVING AND UNFLINCHING, AND I ENJOY EVERY SECOND OF IT! #line:0b9dc74 
+NPC Number Three: MY EYE JUST TRIED TO TWITCH! IT DOESN'T MATTER! I CAN'T MOVE MY FACE PROPERLY! #line:003110c 
+NPC Number Three: ARR MATEY! I BE A PIRATE! #line:0442efe 
 ===
 title: Chest4
 ---
-Searching the chest, you find...
-(2) Three sided dice!
+Searching the chest, you find... #line:02bc996 
+(2) Three sided dice! #line:0b67733 
 <<SetDie "Three">>
 <<SetDie "Three">>
 ===
 title: Chest5
 ---
-Searching the chest, you find...
-(1) Six sided dice!
+Searching the chest, you find... #line:050a2a2 
+(1) Six sided dice! #line:0e6773c 
 <<SetDie "Basic">>
 ===
 title: Chest6
 ---
-Searching the chest, you find...
-(1) Three sided die and (1) [style color="ff0000"]Fire three sided die[/style]!
+Searching the chest, you find... #line:0038679 
+(1) Three sided die and (1) [style color="ff0000"]Fire three sided die[/style]! #line:027feca 
 <<SetDie "Three">>
 <<SetDie "ThreeFire">>
 ===
 title: Chest7
 ---
-Searching the chest, you find...
-(1) Three sided die and (1) [style color="ff0000"]Fire six sided die[/style]!
+Searching the chest, you find... #line:0098d32 
+(1) Three sided die and (1) [style color="ff0000"]Fire six sided die[/style]! #line:0690a97 
 <<SetDie "Three">>
 <<SetDie "BasicFire">>
 ===
 title: Chest8
 ---
-Searching the chest, you find...
-(1) Three sided die!
+Searching the chest, you find... #line:0cd7df1 
+(1) Three sided die! #line:02345cb 
 <<SetDie "Three">>
 ===
 title: Chest9
 ---
-Searching the chest, you find...
-(1) [style color="0000ff"]Ice six sided die[/style]!
+Searching the chest, you find... #line:0dfc24e 
+(1) [style color="0000ff"]Ice six sided die[/style]! #line:07a4511 
 <<SetDie "BasicIce">>
 ===
 title: Parrot
 ---
-Parrot: [style color="4DAB00"]Squawk! Squawk! Pieces o' eight! Pieces o' eight![/style]
--> 1-8 - Ask politely for the treasure.[range="1,8"/]
-    Parrot: [style color="4DAB00"]Caw! Caw! Suck on my foot fungus you rat bastard![/style]
--> 9+ - Ask forcefully for the treasure.[range="9,inf"/]
-    Parrot: [style color="4DAB00"]Ehh, alright. Here ya go![/style]
-    You got (2) Four sided dice!
+Parrot: [style color="4DAB00"]Squawk! Squawk! Pieces o' eight! Pieces o' eight![/style] #line:0f327e9 
+-> 1-8 - Ask politely for the treasure.[range="1,8"/] #line:04eed75 
+    Parrot: [style color="4DAB00"]Caw! Caw! Suck on my foot fungus you rat bastard![/style] #line:058541b 
+-> 9+ - Ask forcefully for the treasure.[range="9,inf"/] #line:0225878 
+    Parrot: [style color="4DAB00"]Ehh, alright. Here ya go![/style] #line:00a77f9 
+    You got (2) Four sided dice! #line:09f31f9 
     <<SetDie "Four">>
     <<SetDie "Four">>
 ===
 title: Mermaid
 ---
-Mermaid: [style color="007BA6"]Help! I've been beached on land![/style]
--> 1-3 - Your futile efforts only end up beaching the Mermaid further.
-    Mermaid: [style color="007BA6"] Jerk! [/style]
--> 4+ - You fling the mermaid farther into the sea.
-    Mermaid: [style color="007BA6"]That helps. I think I can swim back now![/style]
-    You got (1) Six sided dice.
+Mermaid: [style color="007BA6"]Help! I've been beached on land![/style] #line:0b83583 
+-> 1-3 - Your futile efforts only end up beaching the Mermaid further. #line:0466a79 
+    Mermaid: [style color="007BA6"] Jerk! [/style] #line:080225f 
+-> 4+ - You fling the mermaid farther into the sea. #line:0b95f67 
+    Mermaid: [style color="007BA6"]That helps. I think I can swim back now![/style] #line:01156d3 
+    You got (1) Six sided dice. #line:0001a78 
     <<SetDie "Basic">>
--> [style color="0000ff"]4+ - Call on the elements to UNBEACH. [/style][range range="4,inf" attribute="ice"/]
-    Mermaid: [style color="007BA6"]Thaannnkkksss![/style]
-    You got (2) [style color="ff0000"]fire six sided dice[/style].
+-> [style color="0000ff"]4+ - Call on the elements to UNBEACH. [/style][range range="4,inf" attribute="ice"/] #line:090d4b9 
+    Mermaid: [style color="007BA6"]Thaannnkkksss![/style] #line:0096cb9 
+    You got (2) [style color="ff0000"]fire six sided dice[/style]. #line:04a94fe 
     <<SetDie "BasicFire">>
     <<SetDie "BasicFire">>
 ===
 title: LastInteraction
 ---
-The Last Interactor: [style color="D40010"]BEWARE FOOL! FOR NOW YOU FACE THE LAST POSSIBLE CHALLENGE ON YOUR JOURNEY![/style]
-The Last Interactor: [style color="D40010"]FEW HAVE SURVIVED THE PERIL I PRESENT![/style]
--> 1+ - The peril is too perilous.[range="1,inf"/]
-    The Last Interactor: [style color="D40010"] Yeah, that's about what I expected. What kind of pirate are you?[/style]
--> [style color="ff0000"]5+ - Overcome the danger.[/style][range range="5,inf" attribute="fire"/]
-    The Last Interactor: [style color="D40010"]Alright, you get a bunch of dice. Here you go![/style]
-    You got (2) [style color="ff0000"] fire six sided dice[/style] and (2) [style color="0000ff"] ice six sided dice[/style]!
+The Last Interactor: [style color="D40010"]BEWARE FOOL! FOR NOW YOU FACE THE LAST POSSIBLE CHALLENGE ON YOUR JOURNEY![/style] #line:016228d 
+The Last Interactor: [style color="D40010"]FEW HAVE SURVIVED THE PERIL I PRESENT![/style] #line:024e069 
+-> 1+ - The peril is too perilous.[range="1,inf"/] #line:0752e43 
+    The Last Interactor: [style color="D40010"] Yeah, that's about what I expected. What kind of pirate are you?[/style] #line:01f5adf 
+-> [style color="ff0000"]5+ - Overcome the danger.[/style][range range="5,inf" attribute="fire"/] #line:097b885 
+    The Last Interactor: [style color="D40010"]Alright, you get a bunch of dice. Here you go![/style] #line:010b8e6 
+    You got (2) [style color="ff0000"] fire six sided dice[/style] and (2) [style color="0000ff"] ice six sided dice[/style]! #line:0ed67d2 
     <<SetDie "BasicFire">>
     <<SetDie "BasicFire">>
     <<SetDie "BasicIce">>
@@ -217,9 +217,9 @@ The Last Interactor: [style color="D40010"]FEW HAVE SURVIVED THE PERIL I PRESENT
 ===
 title: Win
 ---
-You win! The curse is lifted!
-Or the pirates or whatever! I mean...
-The Right Honorable Good Captain: [style color="ff8000"] Ye did it my good man! Now acquiesce yon treasure and we'll be rich! Arrr! [/style]
-The Right Honorable Good Captain: [style color="ff8000"] Let's bounce! [/style]
-Thanks for playing!
+You win! The curse is lifted! #line:04459be 
+Or the pirates or whatever! I mean... #line:0c7b169 
+The Right Honorable Good Captain: [style color="ff8000"] Ye did it my good man! Now acquiesce yon treasure and we'll be rich! Arrr! [/style] #line:03a8511 
+The Right Honorable Good Captain: [style color="ff8000"] Let's bounce! [/style] #line:057b082 
+Thanks for playing! #line:0bf37b8 
 ===
