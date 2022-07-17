@@ -5,6 +5,7 @@ using Yarn.Unity;
 
 public class SocialInteraction : MonoBehaviour
 {
+    public AudioSource dialogue_sfx;
     public string yarnNodeToStart = "Start";
     public bool triggersAutomatically = false;
     private bool _wasTriggered = false;
@@ -23,6 +24,7 @@ public class SocialInteraction : MonoBehaviour
 
     void Trigger() {
         _wasTriggered = true;
+        dialogue_sfx.Play();
         FindObjectOfType<DialogueCreator>().requiredDialogue = triggersAutomatically;
         FindObjectOfType<DialogueRunner>().StartDialogue(yarnNodeToStart);
     }
