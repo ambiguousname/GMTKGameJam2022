@@ -116,7 +116,7 @@ public class Enemy : MonoBehaviour
         Time.timeScale = 0;
         FindObjectOfType<Shake>().shake = 0.2f;
         FindObjectOfType<Shake>().shakeAmount = hitTimer;
-        yield return new WaitForSecondsRealtime(hitTimer);
+        yield return new WaitForSecondsRealtime(hitTimer * 2);
         Time.timeScale = 1;
         GetComponent<SpriteRenderer>().sprite = _defaultSprite;
         GetComponent<SpriteRenderer>().color = _defaultTint;
@@ -146,23 +146,6 @@ public class Enemy : MonoBehaviour
 
         var distFromPlayer = -(playerDir.normalized * minDistFromPlayer) + _player.transform.position;
 
-        if (_onFireTimer > 0) {
-            GetComponent<SpriteRenderer>().color = Color.red;
-            _onFireTimer -= Time.fixedDeltaTime;
-            if (_onFireTimer <= 0) {
-                if (_onFireTimes > 0)
-                {
-                    _onFireTimes -= 1;
-                    _onFireTimer = 1;
-                    health -= 10;
-                    StartCoroutine(HitPause());
-                }
-                else {
-                    GetComponent<SpriteRenderer>().color = _defaultTint;
-                }
-            }
-        }
-
         if (_frozenTimer > 0)
         {
             GetComponent<SpriteRenderer>().color = Color.blue;
@@ -173,6 +156,28 @@ public class Enemy : MonoBehaviour
         {
             GetComponent<SpriteRenderer>().color = _defaultTint;
             _ai.destination = distFromPlayer;
+        }
+    }
+
+    private void Update()
+    {
+        if (_onFireTimer > 0)
+        {
+            _onFireTimer -= Time.deltaTime;
+            if (_onFireTimer <= 0)
+            {
+                if (_onFireTimes > 0)
+                {
+                    _onFireTimes -= 1;
+                    _onFireTimer = 1;
+                    health -= 10;
+                    StartCoroutine(HitPause());
+                }
+                else
+                {
+                    GetComponent<SpriteRenderer>().color = _defaultTint;
+                }
+            }
         }
     }
 }

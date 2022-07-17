@@ -25,6 +25,7 @@ public class CombatController : MonoBehaviour
             else
             {
                 inCombat = false;
+                _wave = null;
                 _index = 0;
                 doors.SetActive(false);
                 if (teleportTo != null) {
@@ -34,7 +35,7 @@ public class CombatController : MonoBehaviour
                 FindObjectOfType<CombatUIManager>().Show(false);
             }
         }
-        else if (inCombat) {
+        else if (inCombat && _wave == null) {
             doors.SetActive(true);
             _wave = waves[_index];
             _wave.SetActive(true);

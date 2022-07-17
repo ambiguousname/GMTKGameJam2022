@@ -44196,7 +44196,7 @@ PrefabInstance:
     - target: {fileID: 7565480745760355716, guid: 5ed9494ad90deed4584b54ca7e9813f4, type: 3}
       propertyPath: inventory.Array.data[1]
       value: 
-      objectReference: {fileID: 11400000, guid: 39e1dace13f23c8468099b24bc9a8470, type: 2}
+      objectReference: {fileID: 11400000, guid: 34cb0afd1fe63034787dfcbd98b167a3, type: 2}
     - target: {fileID: 8641887556405535574, guid: 5ed9494ad90deed4584b54ca7e9813f4, type: 3}
       propertyPath: m_IsActive
       value: 0
