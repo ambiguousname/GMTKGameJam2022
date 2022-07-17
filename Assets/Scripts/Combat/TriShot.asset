@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1ee53e2551e33748bccf1865b57e206, type: 3}
   m_Name: TriShot
   m_EditorClassIdentifier: 
+  sprite: {fileID: 21300000, guid: 365a6050abfb7fc4e99814761b7a5dbc, type: 3}
   acceleration: 10
   bodyLookSpeed: 1
   fireDelay: 0.3
@@ -22,4 +23,5 @@ MonoBehaviour:
   range: 50
   maxAmmo: 15
   spread: {fileID: 6058761086614576347, guid: 1bb36bc1ef6d7ba43af3235b68fc4e42, type: 3}
+  isGiantLaser: 0
   fireFastAsTrigger: 0
