@@ -1,7 +1,7 @@
 ﻿title: Start
 tags:
 ---
-<<declare $meetDavvy = false as bool>>
+<<declare $meetDavey = false as bool>>
 The Right Honorable Good Captain: [style color="ff8000"] Ahoy there, good sire! Ye might call me the Right Honorable Good Captain of these faire aisles melass.[/style]
 The Right Honorable Good Captain: [style color="ff8000"] What's that ye scallywag? Ah, an enchanted sea witch hath stolen yon voice? [/style]
 The Right Honorable Good Captain: [style color="ff8000"] Prithee listen, I understand yer per-dic-a-ment. I were cursed by great wizerd to alternate speaking styles. [/style]
@@ -84,12 +84,94 @@ Searching the chest, you find...
 title: BobJones
 ---
 Bob Jones: [style color="B75300"]Ho there! Would you happen to be cursed like me? Ya see, I have an identical twin.[/style]
-Bob Jones: [style color="B75300"]Oh, poor Davvy! If only he were okay...[/style]
-<<set $meetDavvy to true>>
+Bob Jones: [style color="B75300"]Oh, poor Davey! If only he were okay...[/style]
+<<set $meetDavey to true>>
 ===
 title: NegativeOne
 ---
 Negative One: [style color="0E00B7"]I was cursed to have a ridiculous nickname.[/style]
 Negative One: [style color="0E00B7"]I wanted to be something cool, like "Number One", or "Number Two". I bet ya half of the people on these isles don't even negative from positive.[/style]
 Negative One: [style color="0E00B7"]If only we could do something about my damn...! But there are so many guns out east, it's not worth trying.[/style]
+===
+title: UnshadyFellow
+---
+Unshady Fellow: [style color="c7c7c7"]How's it going my goodpirate? I can guarantee you that this game is not at all unfair.[/style]
+Unshady Fellow: [style color="c7c7c7"]Just keep your eye on the ball![/style]
+Unshady Fellow: [style italics=true]Shuffles in an unshady fashion.[/style]
+-> 1-3 - Pick Left Cup[range="1,2"/]
+    Unshady Fellow: [style color="c7c7c7"]Sorry, it was the middle one![/style]
+-> 3-4 - Pick Middle Cup[range="3,4"/]
+    Unshady Fellow: [style color="c7c7c7"]Nice going![/style]
+    You get (1) [style color="ff0000"]fire six sided dice[/style].
+    <<SetDie "BasicFire">>
+-> 5-6 - Pick Right Cup[range="5,6"/]
+    Unshady Fellow: [style color="c7c7c7"]Sorry, it was the middle one![/style]
+-> 7+ - Don't pick any. You are wise. You are strong.[range="7,inf"/]
+    Unshady Fellow: [style color="c7c7c7"]Here, have my[/style] (1) normal three sided die[style="c7c7c7"], I guess.[/style]
+    <<SetDie "Three">>
+===
+title: FellowStranded
+---
+Fellow Island Hopper: [style color="D96304"]Looks like you, like myself, are stuck on the next island.[/style]
+Fellow Island Hopper: [style color="D96304"]But don't worry! Since this game was made in 48 hours, the devs only had time to make one more island.[/style]
+Fellow Island Hopper: [style color="D96304"]That's this island.[/style]
+===
+title: DaveyJones
+---
+<<if $meetDavey>>
+    Davey Jones: [style color="B75300"]Oh, you met my bruther Bobby! That's great![/style]
+    Davey Jones:[style color="B75300"]I wonder if there's a way to get back to that other island...[/style]
+    Davey Jones:[style color="B75300"]Oh well, take this as a token of my thanks![/style]
+    You got (1) [style color="0000ff"]ice six sided die[/style]!
+    <<SetDie "BasicIce">>
+<<else>>
+    Davey Jones: [style color="B75300"]Go ahead. Make a joke. I've heard them all.[/style]
+<<endif>>
+===
+title: NPC3
+---
+NPC Number Three: HI THERE! I AM A FULLY FUNCTIONING ADULT!
+NPC Number Three: I SURE ENJOY MY NORMAL AND/OR HUMAN LIFE THAT REQUIRES ME TO SIT IN A SPECIFIC SPOT UNTIL THE END OF TIME ITSELF!
+NPC Number Three: I AM UNMOVING AND UNFLINCHING, AND I ENJOY EVERY SECOND OF IT!
+NPC Number Three: MY EYE JUST TRIED TO TWITCH! IT DOESN'T MATTER! I CAN'T MOVE MY FACE PROPERLY!
+NPC Number Three: ARR MATEY! I BE A PIRATE!
+===
+title: Chest4
+---
+Searching the chest, you find...
+(2) Three sided dice!
+<<SetDie "Three">>
+<<SetDie "Three">>
+===
+title: Chest5
+---
+Searching the chest, you find...
+(1) Six sided dice!
+<<SetDie "Basic">>
+===
+title: Chest6
+---
+Searching the chest, you find...
+(1) Three sided die and (1) [style color="ff0000"]Fire three sided die[/style]!
+<<SetDie "Three">>
+<<SetDie "ThreeFire">>
+===
+title: Chest7
+---
+Searching the chest, you find...
+(1) Three sided die and (1) [style color="ff0000"]Fire six sided die[/style]!
+<<SetDie "Three">>
+<<SetDie "BasicFire">>
+===
+title: Chest8
+---
+Searching the chest, you find...
+(1) Three sided die!
+<<SetDie "Three">>
+===
+title: Chest9
+---
+Searching the chest, you find...
+(1) [style color="0000ff"]Ice six sided die[/style]!
+<<SetDie "BasicIce">>
 ===

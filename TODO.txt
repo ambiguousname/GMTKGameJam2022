@@ -1,8 +1,7 @@
 - Add art
 - Pause Menu
 - HP
-- Sounds
 - Dice rolling anims
 - Menu in and out anims
 - Add helper text
-- Repositioning on the canvas
+- Win Screen
