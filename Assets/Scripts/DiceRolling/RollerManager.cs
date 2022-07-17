@@ -55,6 +55,9 @@ public class RollerManager : MonoBehaviour
     }
 
     public void RenderDice() {
+        if (_uniqueDice.Count == 0) {
+            YarnCommands.SetDie("Basic");
+        }
         // Easier to tweak manually:
         if (_uniqueDice.Count <= 6)
         {
