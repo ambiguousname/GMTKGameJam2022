@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fa1e08c7a290ee43a58e58bf8f17dbb, type: 3}
   m_Name: BasicFire
   m_EditorClassIdentifier: 
-  attachedSprite: {fileID: 0}
+  attachedSprite: {fileID: 21300000, guid: 905f71ecaf110864fb3156928a6b00d5, type: 3}
   faces: 010000000200000003000000040000000500000006000000
   attribute: fire
