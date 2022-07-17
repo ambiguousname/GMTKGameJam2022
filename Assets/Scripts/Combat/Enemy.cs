@@ -5,6 +5,12 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+
+    public AudioSource enemyHit_sfx;
+    public AudioSource enemyShoot_sfx;
+    public AudioSource enemyDead_sfx;
+
+
     [Header("Hits")]
     public float health = 100;
     public Sprite damageSprite;
@@ -56,6 +62,7 @@ public class Enemy : MonoBehaviour
     void EvaluateSpread()
     {
         // For each bullet in the spread:
+        enemyShoot_sfx.Play();
         foreach (Transform child in spread.transform)
         {
             // Get the offset of where the bullet should be based on rotation of the weapon.
@@ -84,6 +91,7 @@ public class Enemy : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "PlayerBullet") {
+            enemyHit_sfx.Play();
             health -= collision.GetComponent<Bullet>().damage;
             if (collision.GetComponent<Bullet>().attribute == "fire") {
                 _onFireTimer = 1;
@@ -121,6 +129,7 @@ public class Enemy : MonoBehaviour
         GetComponent<SpriteRenderer>().sprite = _defaultSprite;
         GetComponent<SpriteRenderer>().color = _defaultTint;
         if (health <= 0) {
+            enemyDead_sfx.Play();
             Destroy(this.gameObject);
         }
     }
