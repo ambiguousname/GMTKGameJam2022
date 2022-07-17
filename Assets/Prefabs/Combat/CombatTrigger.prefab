@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2840241335610147422}
   - component: {fileID: 2840241335610147423}
   - component: {fileID: 2262124281654824911}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CombatTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waves: []
+  teleportTo: {fileID: 0}
 --- !u!61 &2262124281654824911
 BoxCollider2D:
   m_ObjectHideFlags: 0

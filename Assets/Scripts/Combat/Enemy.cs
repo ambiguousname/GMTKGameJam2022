@@ -124,9 +124,8 @@ public class Enemy : MonoBehaviour
                 _fireTimer = fireDelay;
                 EvaluateSpread();
             }
-
-            this.transform.rotation = Quaternion.Slerp(this.transform.rotation, Quaternion.LookRotation(Vector3.forward, playerDir), rotateSpeed * Time.fixedDeltaTime);
         }
+        this.transform.rotation = Quaternion.Slerp(this.transform.rotation, Quaternion.LookRotation(Vector3.forward, playerDir), rotateSpeed * Time.fixedDeltaTime);
 
         if (_fireTimer > 0)
         {

@@ -320,7 +320,7 @@ GameObject:
   - component: {fileID: 142446078}
   - component: {fileID: 142446080}
   - component: {fileID: 142446079}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Tilemap_Decor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40851,7 +40851,7 @@ GameObject:
   m_Component:
   - component: {fileID: 323059758}
   - component: {fileID: 323059757}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Tile_Decor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
