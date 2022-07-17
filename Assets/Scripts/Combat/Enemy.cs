@@ -85,7 +85,6 @@ public class Enemy : MonoBehaviour
     {
         if (collision.tag == "PlayerBullet") {
             health -= collision.GetComponent<Bullet>().damage;
-            Debug.Log(collision.name.Contains("GiantLaser") + " " + collision.name);
             if (collision.GetComponent<Bullet>().attribute == "fire") {
                 _onFireTimer = 1;
                 _onFireTimes = 3;
@@ -159,7 +158,7 @@ public class Enemy : MonoBehaviour
                     StartCoroutine(HitPause());
                 }
                 else {
-                    GetComponent<SpriteRenderer>().color = Color.white;
+                    GetComponent<SpriteRenderer>().color = _defaultTint;
                 }
             }
         }
@@ -172,7 +171,7 @@ public class Enemy : MonoBehaviour
         }
         else
         {
-            GetComponent<SpriteRenderer>().color = Color.white;
+            GetComponent<SpriteRenderer>().color = _defaultTint;
             _ai.destination = distFromPlayer;
         }
     }

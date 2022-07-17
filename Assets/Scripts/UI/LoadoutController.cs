@@ -48,7 +48,7 @@ public class LoadoutController : MonoBehaviour
         stats[_activeWeapon].Equip();
 
         _activeIndex++;
-        if (_activeIndex > loadout.Count)
+        if (_activeIndex >= loadout.Count)
         {
             _activeIndex = 0;
         }
