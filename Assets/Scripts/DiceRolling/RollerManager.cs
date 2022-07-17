@@ -143,6 +143,7 @@ public class RollerManager : MonoBehaviour
         _invRender = new List<GameObject>();
         RenderDice();
         transform.GetChild(0).GetChild(1).gameObject.SetActive(showDragBox);
+        transform.GetChild(0).GetChild(0).gameObject.SetActive(true);
         transform.GetChild(0).gameObject.SetActive(true);
         _endCallback = callback;
     }

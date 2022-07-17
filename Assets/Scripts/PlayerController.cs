@@ -77,7 +77,7 @@ public class PlayerController : MonoBehaviour
 
         animator.playAnimation(animator.idle, .4f);
 
-        Cursor.SetCursor(cursor, new Vector2(0.5f, 0.5f), CursorMode.Auto);
+        Cursor.SetCursor(cursor, Vector2.zero, CursorMode.Auto);
     }
 
     #region PhysicsUpdates

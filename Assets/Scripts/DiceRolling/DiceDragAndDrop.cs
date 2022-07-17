@@ -72,7 +72,9 @@ public class DiceDragAndDrop : MonoBehaviour, IDragHandler, IEndDragHandler
         _callback = callback;
     }
 
-    public void StopRolling() {
+    public void StopRolling()
+    {
+        GetComponent<AudioSource>().Play();
         this.transform.GetChild(2).gameObject.SetActive(false);
         this.transform.GetChild(1).gameObject.SetActive(true);
         this.transform.GetChild(0).gameObject.SetActive(true);

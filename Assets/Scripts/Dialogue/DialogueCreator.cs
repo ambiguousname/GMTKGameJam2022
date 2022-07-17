@@ -30,6 +30,7 @@ public class DialogueCreator : DialogueViewBase
     private List<DialogueChoice> _choices;
     private PlayerController _player;
     public bool requiredDialogue = false;
+    public bool dialogueStop = false;
 
     private void Awake()
     {
@@ -50,25 +51,28 @@ public class DialogueCreator : DialogueViewBase
     }
 
     public void FireClick() {
-        if (_activeTextPrint != null)
+        if (!dialogueStop)
         {
-            StopCoroutine(_activeTextPrint);
-            if (_dialogueFinished != null)
+            if (_activeTextPrint != null)
             {
-                if (_select.gameObject.activeInHierarchy)
+                StopCoroutine(_activeTextPrint);
+                if (_dialogueFinished != null)
                 {
-                    _dialogueFinished();
+                    if (_select.gameObject.activeInHierarchy)
+                    {
+                        _dialogueFinished();
+                    }
+                    else
+                    {
+                        _conversation.text = _textToPrint;
+                        _select.gameObject.SetActive(true);
+                    }
                 }
                 else
                 {
-                    _conversation.text = _textToPrint;
-                    _select.gameObject.SetActive(true);
+                    _select.text = _textToPrint;
+                    ShowRolling();
                 }
-            }
-            else
-            {
-                _select.text = _textToPrint;
-                ShowRolling();
             }
         }
     }
@@ -93,6 +97,7 @@ public class DialogueCreator : DialogueViewBase
 
     public override void DialogueStarted()
     {
+        dialogueStop = false;
         this.transform.GetChild(0).gameObject.SetActive(true);
         this.transform.GetChild(0).GetChild(4).gameObject.SetActive(!requiredDialogue);
         _player.moveEnabled = false;
@@ -278,6 +283,7 @@ public class DialogueCreator : DialogueViewBase
     }
 
     public void ForceStop() {
+        dialogueStop = true;
         GetComponent<DialogueRunner>().Stop();
         DialogueComplete();
     }
