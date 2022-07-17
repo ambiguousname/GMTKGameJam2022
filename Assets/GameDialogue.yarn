@@ -43,7 +43,7 @@ Shady Feller: [style color="c7c7c7"] Step right up all ye cursed souls! You espe
 Shady Feller: [style italics=true]*Ahem*.[/style] [style color="c7c7c7"]It's fine. You're good. Want to play me in a game of shells?[/style]
 -> 1-12+ - You have a go. [range="1,inf"/]
     Shady Feller: [style color="c7c7c7"]Sorry, rotten luck! Better luck next time, fool![/style]
--> [style color="0000ff"] 3-12+ - You have a go. [/style][range="3,inf"/]
+-> [style color="0000ff"] 3-12+ - You have a go. [/style][range range="3,inf" attribute="ice"/]
     Shady Feller: [style color="c7c7c7"] Wh- you cheated! You no good backstabbing...[/style]
     Shady Feller: [style color="c7c7c7"] I don't e'er want to see you again.[/style]
     You get a trick die! It only rolls fives or sixes!
@@ -174,4 +174,52 @@ title: Chest9
 Searching the chest, you find...
 (1) [style color="0000ff"]Ice six sided die[/style]!
 <<SetDie "BasicIce">>
+===
+title: Parrot
+---
+Parrot: [style color="4DAB00"]Squawk! Squawk! Pieces o' eight! Pieces o' eight![/style]
+-> 1-8 - Ask politely for the treasure.[range="1,8"/]
+    Parrot: [style color="4DAB00"]Caw! Caw! Suck on my foot fungus you rat bastard![/style]
+-> 9+ - Ask forcefully for the treasure.[range="9,inf"/]
+    Parrot: [style color="4DAB00"]Ehh, alright. Here ya go![/style]
+    You got (2) Four sided dice!
+    <<SetDie "Four">>
+    <<SetDie "Four">>
+===
+title: Mermaid
+---
+Mermaid: [style color="007BA6"]Help! I've been beached on land![/style]
+-> 1-3 - Your futile efforts only end up beaching the Mermaid further.
+    Mermaid: [style color="007BA6"] Jerk! [/style]
+-> 4+ - You fling the mermaid farther into the sea.
+    Mermaid: [style color="007BA6"]That helps. I think I can swim back now![/style]
+    You got (1) Six sided dice.
+    <<SetDie "Basic">>
+-> [style color="0000ff"]4+ - Call on the elements to UNBEACH. [/style][range range="4,inf" attribute="ice"/]
+    Mermaid: [style color="007BA6"]Thaannnkkksss![/style]
+    You got (2) [style color="ff0000"]fire six sided dice[/style].
+    <<SetDie "BasicFire">>
+    <<SetDie "BasicFire">>
+===
+title: LastInteraction
+---
+The Last Interactor: [style color="D40010"]BEWARE FOOL! FOR NOW YOU FACE THE LAST POSSIBLE CHALLENGE ON YOUR JOURNEY![/style]
+The Last Interactor: [style color="D40010"]FEW HAVE SURVIVED THE PERIL I PRESENT![/style]
+-> 1+ - The peril is too perilous.[range="1,inf"/]
+    The Last Interactor: [style color="D40010"] Yeah, that's about what I expected. What kind of pirate are you?[/style]
+-> [style color="ff0000"]5+ - Overcome the danger.[/style][range range="5,inf" attribute="fire"/]
+    The Last Interactor: [style color="D40010"]Alright, you get a bunch of dice. Here you go![/style]
+    You got (2) [style color="ff0000"] fire six sided dice[/style] and (2) [style color="0000ff"] ice six sided dice[/style]!
+    <<SetDie "BasicFire">>
+    <<SetDie "BasicFire">>
+    <<SetDie "BasicIce">>
+    <<SetDie "BasicIce">>
+===
+title: Win
+---
+You win! The curse is lifted!
+Or the pirates or whatever! I mean...
+The Right Honorable Good Captain: [style color="ff8000"] Ye did it my good man! Now acquiesce yon treasure and we'll be rich! Arrr! [/style]
+The Right Honorable Good Captain: [style color="ff8000"] Let's bounce! [/style]
+Thanks for playing!
 ===
