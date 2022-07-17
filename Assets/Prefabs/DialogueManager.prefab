@@ -560,9 +560,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1646862788669298013}
-        m_TargetAssemblyTypeName: DialogueCreator, Assembly-CSharp
-        m_MethodName: DialogueComplete
+      - m_Target: {fileID: 1646862788669298012}
+        m_TargetAssemblyTypeName: Yarn.Unity.DialogueRunner, YarnSpinner.Unity
+        m_MethodName: Stop
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -51,17 +51,10 @@ public class PlayerController : MonoBehaviour
     private Sprite _defaultSprite;
     private Color _defaultTint;
 
-
-    [Header("Cursor")]
-    // TODO: Replace with something else (custom function calls?)
-    public Texture2D cursorToUse;
-
     // Start is called before the first frame update
     void Start()
     {
         Cursor.lockState = CursorLockMode.Confined;
-        // TODO: Replace?
-        Cursor.SetCursor(cursorToUse, Vector2.zero, CursorMode.Auto);
         Application.targetFrameRate = 60;
         _rigidbody = GetComponent<Rigidbody2D>();
         _weapon = this.gameObject.FindChildWithName("Weapon");
@@ -77,7 +70,6 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Cursor.SetCursor(cursorToUse, Vector2.zero, CursorMode.Auto);
         if (moveEnabled)
         {
             _rigidbody.AddForce(_accelIntent * acceleration);
