@@ -6,7 +6,7 @@ using Yarn.Unity;
 public class YarnCommands : MonoBehaviour
 {
     [YarnCommand]
-    public static void GiveDie(string name) {
+    public static void SetDie(string name) {
         FindObjectOfType<RollerManager>().AddDie(Resources.Load<Dice>(name));
     }
 }

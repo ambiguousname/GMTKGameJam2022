@@ -42479,6 +42479,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4494648716563129, guid: 5ed9494ad90deed4584b54ca7e9813f4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1713455070856112232, guid: 5ed9494ad90deed4584b54ca7e9813f4, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -42610,6 +42614,14 @@ PrefabInstance:
     - target: {fileID: 5640761883226592679, guid: 5ed9494ad90deed4584b54ca7e9813f4, type: 3}
       propertyPath: orthographic size
       value: 9.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5708447242364811414, guid: 5ed9494ad90deed4584b54ca7e9813f4, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5708447242364811414, guid: 5ed9494ad90deed4584b54ca7e9813f4, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -262
       objectReference: {fileID: 0}
     - target: {fileID: 6065787918413942174, guid: 5ed9494ad90deed4584b54ca7e9813f4, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -123255,6 +123267,10 @@ PrefabInstance:
     - target: {fileID: 3799265314364336707, guid: 9f2214b80bf845d4f95c17e562567539, type: 3}
       propertyPath: m_Name
       value: Social NPC
+      objectReference: {fileID: 0}
+    - target: {fileID: 3799265314364336707, guid: 9f2214b80bf845d4f95c17e562567539, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3799265314364336717, guid: 9f2214b80bf845d4f95c17e562567539, type: 3}
       propertyPath: m_RootOrder
