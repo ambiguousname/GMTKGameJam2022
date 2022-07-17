@@ -93,22 +93,27 @@ public class RollerManager : MonoBehaviour
             var newDie = Instantiate(diePrefab);
             _invRender.Add(newDie);
             newDie.transform.GetChild(1).GetComponent<Image>().sprite = dice.attachedSprite;
-            newDie.GetComponent<DiceDragAndDrop>().attachedDie = dice;
+            newDie.GetComponent<DiceDragAndDrop>().attachedDie = new Dice(dice);
             newDie.transform.SetParent(_rollBox.transform, false);
 
-            // Look for duplicates:
-            var allDice = inventory.FindAll((d) => {
-                return d.Equals(dice);
-            });
-            for (int i = 0; i < allDice.Count - 1; i++) {
-                var subDie = Instantiate(diePrefab);
-                _invRender.Add(subDie);
-                subDie.transform.GetChild(1).GetComponent<Image>().sprite = dice.attachedSprite;
-                subDie.GetComponent<DiceDragAndDrop>().attachedDie = dice;
-                subDie.transform.parent = transform;
-                subDie.GetComponent<RectTransform>().sizeDelta = new Vector2(_rollBox.cellSize.x, _rollBox.cellSize.y);
-                subDie.transform.localScale = Vector3.one;
-                StartCoroutine(SetDieParent(subDie.transform, new Vector3(-(i + 1) * 5, -(i + 1) * 5), newDie.transform));
+            bool _onceEncountered = false;
+            int i = 0;
+            foreach (var d in inventory) {
+                if (d.Equals(dice) && !_onceEncountered)
+                {
+                    _onceEncountered = true;
+                }
+                else if (d.Equals(dice) && _onceEncountered) {
+                    var subDie = Instantiate(diePrefab);
+                    _invRender.Add(subDie);
+                    subDie.transform.GetChild(1).GetComponent<Image>().sprite = d.attachedSprite;
+                    subDie.GetComponent<DiceDragAndDrop>().attachedDie = new Dice(d);
+                    subDie.transform.parent = transform;
+                    subDie.GetComponent<RectTransform>().sizeDelta = new Vector2(_rollBox.cellSize.x, _rollBox.cellSize.y);
+                    subDie.transform.localScale = Vector3.one;
+                    StartCoroutine(SetDieParent(subDie.transform, new Vector3(-(i + 1) * 5, -(i + 1) * 5), newDie.transform));
+                    i++;
+                }
             }
         }
     }
@@ -197,6 +202,7 @@ public class RollerManager : MonoBehaviour
                     if (dice.faces != null)
                     {
                         _targetSum++;
+                        Debug.Log(dice.attachedDragAndDrop.name);
                         dice.attachedDragAndDrop.Roll((dice.attribute != null) ? dice.attribute : "", DieRollDone);
                     }
                 }

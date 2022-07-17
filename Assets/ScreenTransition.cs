@@ -39,8 +39,14 @@ public class ScreenTransition : MonoBehaviour
     { 
         if (cam.WorldToScreenPoint(player.position).x > Screen.width || cam.WorldToScreenPoint(player.position).x < 0 || cam.WorldToScreenPoint(player.position).y > Screen.height || cam.WorldToScreenPoint(player.position).y < 0)
         {
-            GetComponent<CinemachineBrain>().ActiveVirtualCamera.Priority = 10;
-            GetClosestAndActivate();
+            if (GetComponent<CinemachineBrain>().ActiveVirtualCamera != null)
+            {
+                GetComponent<CinemachineBrain>().ActiveVirtualCamera.Priority = 10;
+                GetClosestAndActivate();
+            }
+            else {
+                GetClosestAndActivate();
+            }
         }
 
     }

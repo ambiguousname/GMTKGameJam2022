@@ -15,4 +15,14 @@ public class Dice : ScriptableObject
         int result = Random.Range(0, faces.Count);
         return faces[result];
     }
+
+    public Dice(Dice d) {
+        attachedSprite = d.attachedSprite;
+        faces = d.faces;
+        attribute = d.attribute;
+    }
+
+    public Dice() { 
+        
+    }
 }
