@@ -278,4 +278,9 @@ public class DialogueCreator : DialogueViewBase
         _player.moveEnabled = true;
         FindObjectOfType<CombatUIManager>().Show(true);
     }
+
+    public void ForceStop() {
+        GetComponent<DialogueRunner>().Stop();
+        DialogueComplete();
+    }
 }
