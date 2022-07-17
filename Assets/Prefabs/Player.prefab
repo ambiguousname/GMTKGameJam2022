@@ -220,7 +220,7 @@ MonoBehaviour:
       m_Calls: []
   playerHit_sfx: {fileID: 6049532548442425331}
   playerFire_sfx: {fileID: 7681520523524921266}
-  cursor: {fileID: 2800000, guid: be37d2aa4851dd342afe16f9db434ed6, type: 3}
+  cursor: {fileID: 2800000, guid: 7831b567da5dc754e8e28824cbe71cc4, type: 3}
   acceleration: 10
   bodyLookSpeed: 2
   fireDelay: 0.1
