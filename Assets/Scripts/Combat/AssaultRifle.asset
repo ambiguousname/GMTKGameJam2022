@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: AssaultRifle
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 69a505972c9db284f80bc8529a26cf64, type: 3}
-  acceleration: 10
+  acceleration: 500
   bodyLookSpeed: 1
   fireDelay: 0.1
   fireForce: 500
