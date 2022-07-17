@@ -8,6 +8,8 @@ public class Dice : ScriptableObject
     public Sprite attachedSprite;
     public List<int> faces;
     public string attribute;
+    [HideInInspector]
+    public DiceDragAndDrop attachedDragAndDrop;
 
     public int Roll() {
         int result = Random.Range(0, faces.Count);

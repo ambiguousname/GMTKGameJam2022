@@ -92,7 +92,7 @@ public class RollerManager : MonoBehaviour
         foreach (Dice dice in _uniqueDice) {
             var newDie = Instantiate(diePrefab);
             _invRender.Add(newDie);
-            newDie.GetComponent<Image>().sprite = dice.attachedSprite;
+            newDie.transform.GetChild(1).GetComponent<Image>().sprite = dice.attachedSprite;
             newDie.GetComponent<DiceDragAndDrop>().attachedDie = dice;
             newDie.transform.SetParent(_rollBox.transform, false);
 
@@ -103,7 +103,7 @@ public class RollerManager : MonoBehaviour
             for (int i = 0; i < allDice.Count - 1; i++) {
                 var subDie = Instantiate(diePrefab);
                 _invRender.Add(subDie);
-                subDie.GetComponent<Image>().sprite = dice.attachedSprite;
+                subDie.transform.GetChild(1).GetComponent<Image>().sprite = dice.attachedSprite;
                 subDie.GetComponent<DiceDragAndDrop>().attachedDie = dice;
                 subDie.transform.parent = transform;
                 subDie.GetComponent<RectTransform>().sizeDelta = new Vector2(_rollBox.cellSize.x, _rollBox.cellSize.y);
@@ -148,7 +148,6 @@ public class RollerManager : MonoBehaviour
     }
 
     public void AddDieToRoll(Dice die, int slot=-1) {
-        Debug.Log(die.faces + " " + slot);
         if (slot >= 0)
         {
             _diceToRoll[slot] = die;
@@ -167,20 +166,39 @@ public class RollerManager : MonoBehaviour
         _diceToRoll[index] = new Dice();
     }
 
+    private int _diceRollSum = 0;
+    private int _targetSum = 0;
+    private void DieRollDone() {
+        _diceRollSum++;
+        if (_diceRollSum >= _targetSum)
+        {
+            // Remove from the inventory:
+            foreach (var dice in _diceToRoll) {
+                RemoveDie(dice);
+            }
+            _endCallback(_diceToRoll);
+        }
+    }
+
     public void Roll() {
         if (_diceToRoll.Count > 0)
         {
+            _diceRollSum = 0;
+            _targetSum = 0;
             var atLeastOne = _diceToRoll.Exists((dice) => {
                 return dice.faces != null;
             });
             if (atLeastOne)
             {
-                // Remove from the inventory:
+                GameObject.Find("RollButton").SetActive(false);
                 foreach (var dice in _diceToRoll)
                 {
-                    RemoveDie(dice);
+                    if (dice.faces != null)
+                    {
+                        _targetSum++;
+                        dice.attachedDragAndDrop.Roll((dice.attribute != null) ? dice.attribute : "", DieRollDone);
+                    }
                 }
-                _endCallback(_diceToRoll);
             }
         }
     }

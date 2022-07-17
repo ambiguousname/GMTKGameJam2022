@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,6 +22,8 @@ public class DiceDragAndDrop : MonoBehaviour, IDragHandler, IEndDragHandler
 
     private bool _firstMove = false;
 
+    public bool canBeDragged = true;
+
     private int _index = -1;
 
     private void Awake()
@@ -38,58 +41,95 @@ public class DiceDragAndDrop : MonoBehaviour, IDragHandler, IEndDragHandler
 
     public void OnDrag(PointerEventData eventData)
     {
-        if (_firstMove == false) {
-            startingPos = dragTransform.position;
-            _firstMove = true;
-        }
-        if (RectTransformUtility.ScreenPointToWorldPointInRectangle(dragTransform, eventData.
-            position, eventData.pressEventCamera, out var globalMousePosition))
+        if (canBeDragged)
         {
-            dragTransform.position = Vector3.SmoothDamp(dragTransform.position,
-                globalMousePosition, ref velocity, dampingSpeed);
+            if (_firstMove == false)
+            {
+                startingPos = dragTransform.position;
+                _firstMove = true;
+            }
+            if (RectTransformUtility.ScreenPointToWorldPointInRectangle(dragTransform, eventData.
+                position, eventData.pressEventCamera, out var globalMousePosition))
+            {
+                dragTransform.position = Vector3.SmoothDamp(dragTransform.position,
+                    globalMousePosition, ref velocity, dampingSpeed);
+            }
         }
+    }
+
+    private Action _callback;
+
+    public void Roll(string attribute, Action callback) {
+        this.transform.GetChild(2).GetComponent<Animator>().SetTrigger((attribute != "") ? attribute : "Basic");
+        this.transform.GetChild(2).gameObject.SetActive(true);
+        this.transform.GetChild(1).gameObject.SetActive(false);
+        this.transform.GetChild(2).GetComponent<RollingAnim>().shouldKeepRolling = false;
+        this.transform.GetChild(2).GetComponent<Animator>().Play(attribute + "Roll");
+        _callback = callback;
+    }
+
+    public void StopRolling() {
+        this.transform.GetChild(2).gameObject.SetActive(false);
+        this.transform.GetChild(1).gameObject.SetActive(true);
+        this.transform.GetChild(0).gameObject.SetActive(true);
+        this.transform.GetChild(0).GetComponent<Animator>().Play("LandVFX");
+
+    }
+
+    public void LandEnd() {
+        this.transform.GetChild(0).gameObject.SetActive(false);
+        _callback();
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        SlotGrid containedSlot = null;
-        var slots = FindObjectsOfType<SlotGrid>();
-        foreach (var slot in slots) {
-            if (slot.gameObject.activeInHierarchy && RectTransformUtility.RectangleContainsScreenPoint(slot.GetComponent<RectTransform>(), dragTransform.position)) {
-                containedSlot = slot;
-                break;
-            }
-        }
-
-        if (containedSlot != null || (_targetTransform != null && RectTransformUtility.RectangleContainsScreenPoint(_targetTransform, dragTransform.position)))
+        if (canBeDragged)
         {
-            if (containedSlot != null)
+            SlotGrid containedSlot = null;
+            var slots = FindObjectsOfType<SlotGrid>();
+            foreach (var slot in slots)
             {
-                dragTransform.position = containedSlot.transform.position;
+                if (slot.gameObject.activeInHierarchy && RectTransformUtility.RectangleContainsScreenPoint(slot.GetComponent<RectTransform>(), dragTransform.position))
+                {
+                    containedSlot = slot;
+                    break;
+                }
             }
-            if (!_isBeingRolled)
+
+            if (containedSlot != null || (_targetTransform != null && RectTransformUtility.RectangleContainsScreenPoint(_targetTransform, dragTransform.position)))
             {
-                _isBeingRolled = true;
                 if (containedSlot != null)
                 {
-                    if (_index != -1) {
-                        FindObjectOfType<RollerManager>().RemoveDiceFromRoll(attachedDie, _index);
-                    }
-                    FindObjectOfType<RollerManager>().AddDieToRoll(attachedDie, containedSlot.slot);
-                    _index = containedSlot.slot;
+                    dragTransform.position = containedSlot.transform.position;
                 }
-                else
+                if (!_isBeingRolled)
                 {
-                    FindObjectOfType<RollerManager>().AddDieToRoll(attachedDie);
+                    attachedDie.attachedDragAndDrop = this;
+                    _isBeingRolled = true;
+                    if (containedSlot != null)
+                    {
+                        if (_index != -1)
+                        {
+                            FindObjectOfType<RollerManager>().RemoveDiceFromRoll(attachedDie, _index);
+                        }
+                        FindObjectOfType<RollerManager>().AddDieToRoll(attachedDie, containedSlot.slot);
+                        _index = containedSlot.slot;
+                    }
+                    else
+                    {
+                        FindObjectOfType<RollerManager>().AddDieToRoll(attachedDie);
+                    }
                 }
             }
-        }
-        else {
-            _index = -1;
-            dragTransform.position = startingPos;
-            if (_isBeingRolled) {
-                _isBeingRolled = false;
-                FindObjectOfType<RollerManager>().RemoveDiceFromRoll(attachedDie);
+            else
+            {
+                _index = -1;
+                dragTransform.position = startingPos;
+                if (_isBeingRolled)
+                {
+                    _isBeingRolled = false;
+                    FindObjectOfType<RollerManager>().RemoveDiceFromRoll(attachedDie);
+                }
             }
         }
     }

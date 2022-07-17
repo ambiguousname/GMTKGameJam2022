@@ -17,7 +17,9 @@ public class LoadoutController : MonoBehaviour
         FindObjectOfType<RollerManager>().EnableRolling((dice) => {
             _activeIndex = 0;
             foreach (var die in dice) {
-                if (die.faces != null) {
+                if (die.faces != null) 
+                {
+                    die.attachedDragAndDrop.transform.GetChild(1).GetComponent<Image>().sprite = Resources.Load<Sprite>("Dice Assets/" + (die.attribute != "" ? die.attribute : "white") + "_Die_" + die.Roll());
                     loadout.Add(die);
                 }
             }
@@ -46,7 +48,7 @@ public class LoadoutController : MonoBehaviour
         // Result is 1-6 (We want 0-5):
         _activeWeapon = loadout[_activeIndex].Roll() - 1;
         activeAttr = loadout[_activeIndex].attribute;
-        FindObjectOfType<CombatUIManager>().transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<Image>().sprite = Resources.Load<Sprite>("DiceAssets/" + loadout[_activeIndex].attachedSprite + "_Die_" + _activeWeapon);
+        FindObjectOfType<CombatUIManager>().transform.GetChild(0).GetChild(0).GetChild(0).GetChild(1).GetComponent<Image>().sprite = Resources.Load<Sprite>("Dice Assets/" + (loadout[_activeIndex].attribute != ""? loadout[_activeIndex].attribute : "white") + "_Die_" + _activeWeapon);
         stats[_activeWeapon].Equip();
 
         _activeIndex++;
