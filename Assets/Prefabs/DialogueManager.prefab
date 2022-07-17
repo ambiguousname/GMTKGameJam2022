@@ -34,8 +34,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 11.1978}
-  m_SizeDelta: {x: 353.3301, y: 106.0249}
+  m_AnchoredPosition: {x: -1.6073914, y: 11.1978}
+  m_SizeDelta: {x: -33.1737, y: 106.0249}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1646862788395054925
 CanvasRenderer:
@@ -280,10 +280,10 @@ RectTransform:
   m_Father: {fileID: 1646862788669298082}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1646862790268124352
 GameObject:
@@ -319,7 +319,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -0.0009765625, y: 0}
   m_SizeDelta: {x: 393.3301, y: 198.0524}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1646862790268124413
@@ -394,8 +394,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -82.31566}
-  m_SizeDelta: {x: 353.3301, y: 6.052704}
+  m_AnchoredPosition: {x: -1.6065063, y: -82.31566}
+  m_SizeDelta: {x: -33.1755, y: 6.052704}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1646862790316200820
 CanvasRenderer:
@@ -475,7 +475,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 196.66502, y: 99.02617}
+  m_AnchoredPosition: {x: 0, y: -0.000015258789}
   m_SizeDelta: {x: 36.749985, y: 36.75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5575170424842756281
@@ -560,9 +560,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1646862788669298012}
-        m_TargetAssemblyTypeName: Yarn.Unity.DialogueRunner, YarnSpinner.Unity
-        m_MethodName: Stop
+      - m_Target: {fileID: 1646862788669298013}
+        m_TargetAssemblyTypeName: DialogueCreator, Assembly-CSharp
+        m_MethodName: ForceStop
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

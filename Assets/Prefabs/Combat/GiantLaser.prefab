@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6197306963826889480}
   - component: {fileID: -4127624572478551635}
-  - component: {fileID: 4302444650935928849}
+  - component: {fileID: -4771997866202972261}
   m_Layer: 0
   m_Name: GiantLaser
   m_TagString: PlayerBullet
@@ -59,7 +59,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 40.093895}
   m_EdgeRadius: 0
---- !u!114 &4302444650935928849
+--- !u!114 &-4771997866202972261
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -73,6 +73,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 100
   range: 0
+  isLaser: 1
 --- !u!1 &6197306964179718097
 GameObject:
   m_ObjectHideFlags: 0
@@ -170,3 +171,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 10
   range: 1000
+  isLaser: 0
