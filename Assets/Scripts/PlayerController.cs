@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
     public float acceleration = 10.0f;
     // Player is slow to look, but the gun turns fast (it's the real source of bullets anyways)
     public float bodyLookSpeed = 1.0f;
+    public Vector2 maxMoveSpeed;
 
     private Vector2 _accelIntent;
     private Rigidbody2D _rigidbody;
@@ -87,10 +88,42 @@ public class PlayerController : MonoBehaviour
         if (moveEnabled)
         {
             _rigidbody.AddForce(_accelIntent * acceleration);
+            if(_rigidbody.velocity.x > maxMoveSpeed.x)
+            {
+                _rigidbody.velocity = new Vector2(maxMoveSpeed.x, _rigidbody.velocity.y);
+            }
+            if(_rigidbody.velocity.y > maxMoveSpeed.y)
+            {
+                _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, maxMoveSpeed.y);
+            }
+            if(_rigidbody.velocity.x < -maxMoveSpeed.x)
+            {
+                _rigidbody.velocity = new Vector2(-maxMoveSpeed.x, _rigidbody.velocity.y);
+            }
+            if(_rigidbody.velocity.y < -maxMoveSpeed.y)
+            {
+                _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, -maxMoveSpeed.y);
+            }
+
             Vector2 screenPos = Mouse.current.position.ReadValue();
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(new Vector3(screenPos.x, screenPos.y, this.transform.position.y));
             ManageAnimations(mousePos);
             AttemptToFireWeapon();
+            if(_accelIntent == Vector2.zero)
+            {
+                _rigidbody.velocity = _rigidbody.velocity / 1.5f;
+                /*
+                if(-0.01f <= _rigidbody.velocity.x && _rigidbody.velocity.x <= 0.01f)
+                {
+                    _rigidbody.velocity = new Vector2(0, _rigidbody.velocity.y);
+                }
+                if(-0.01f <= _rigidbody.velocity.y && _rigidbody.velocity.y <= 0.01f)
+                {
+                    _rigidbody.velocity = new Vector2(_rigidbody.velocity.y, 0);
+                }
+                */
+                
+            }
         }
         else {
             _rigidbody.velocity = Vector2.zero;
