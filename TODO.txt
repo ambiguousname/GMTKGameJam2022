@@ -11,5 +11,4 @@
 - Dice rolling anims
 - Menu in and out anims
 - Add helper text
-- Darker background for speaking
 - Repositioning on the canvas
