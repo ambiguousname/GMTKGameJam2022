@@ -105,8 +105,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1198435121
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: -2135585597343286014, guid: eed45a33cd08446c8b88325cf82fc52f, type: 3}
   m_Color: {r: 1, g: 0.85638046, b: 0, a: 1}
@@ -169,6 +169,7 @@ MonoBehaviour:
   fireDelay: 2
   rotateSpeed: 3
   minDistFromPlayer: 5
+  range: 500
 --- !u!50 &8353787989225013452
 Rigidbody2D:
   serializedVersion: 4

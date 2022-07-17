@@ -138,9 +138,7 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator Reload() {
         _isReloading = true;
-        Debug.LogError("?");
         yield return new WaitForSeconds(1);
-        Debug.LogError("H");
         _isReloading = false;
         FindObjectOfType<LoadoutController>().Reload();
     }
@@ -150,7 +148,6 @@ public class PlayerController : MonoBehaviour
             //placeholder ammo code just to show off UI
             ammo--;
 
-            Debug.Log(ammo);
             if (ammo == 0)
             {
                 StartCoroutine(Reload());
@@ -164,6 +161,10 @@ public class PlayerController : MonoBehaviour
             else
             {
                 EvaluateSpread();
+            }
+
+            if (fireFastAsTrigger) {
+                _intendsToFire = false;
             }
         }
 
@@ -203,7 +204,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnFireFastAsTrigger(InputValue value) {
         if (fireFastAsTrigger) {
-            _intendsToFire = (value.Get<float>() >= 0.5f) ? true : false;
+            _intendsToFire = true;
         }
         onFire.Invoke();
     }

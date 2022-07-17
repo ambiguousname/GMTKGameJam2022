@@ -14,12 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   acceleration: 10
   bodyLookSpeed: 1
-  fireDelay: 5
-  fireForce: 500
+  fireDelay: 2
+  fireForce: 1000
   bulletDrag: 0
   recoil: 0.1
   damage: 100
   range: 1000
   maxAmmo: 10
   spread: {fileID: 6099286412882295873, guid: cd99fbbbf8ae9b449b6b4361d1c4ac45, type: 3}
+  isGiantLaser: 0
   fireFastAsTrigger: 0

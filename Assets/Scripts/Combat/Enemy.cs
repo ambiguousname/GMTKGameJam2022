@@ -82,6 +82,7 @@ public class Enemy : MonoBehaviour
     {
         if (collision.tag == "PlayerBullet") {
             health -= collision.GetComponent<Bullet>().damage;
+            Debug.Log(collision.name);
             if (collision.name != "GiantLaser")
             {
                 Destroy(collision.gameObject);

@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,17 +15,13 @@ public class Shake : MonoBehaviour
     {
         if (shake > 0)
         {
-            this.transform.localPosition = startTransform + Random.insideUnitSphere * shakeAmount;
+            CinemachineVirtualCamera camera = GetComponent<CinemachineBrain>().ActiveVirtualCamera.VirtualCameraGameObject.GetComponent<CinemachineVirtualCamera>();
+            camera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = shakeAmount;
             shake -= Time.unscaledDeltaTime * decreaseFactor;
             if (shake <= 0)
             {
-                this.transform.localPosition = startTransform;
+                camera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = 0;
             }
-        }
-        else
-        {
-            startTransform = this.transform.localPosition;
-            shake = 0;
         }
     }
 }
