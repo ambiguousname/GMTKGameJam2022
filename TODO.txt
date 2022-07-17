@@ -4,5 +4,20 @@
 - Add art
 - Main Menu
 - Pause Menu
+- Lose screen
 - Credits
 - Settings(?)
+- Fix bug where dice attributes can be rolled for wrong skill challenges (treat as normal?)
+- Inventory button(?)
+- HP
+- Reloading
+- Add helper text
+
+Dice Names:
+Basic (Six sided basic)
+Three (Three sided basic)
+Trick Die (Only rolls 5s or 6s basic)
+BasicIce (Six sided ice)
+ThreeFire (Three sided fire)
+BasicFire (Six sided fire)
+ThreeIce (Three sided ice)
