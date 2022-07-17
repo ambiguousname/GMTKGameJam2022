@@ -71,7 +71,7 @@ public class Enemy : MonoBehaviour
         {
             // Get the offset of where the bullet should be based on rotation of the weapon.
             // We only need the rotation of the weapon since it should be automatically pointing to the mouse at all times.
-            var newPos = Helper.RotateAroundPivot(child.localPosition, -_firePoint.transform.localPosition, this.transform.eulerAngles);
+            var newPos = Helper.RotateAroundPivot(child.localPosition, -_firePoint.transform.localPosition, transform.GetChild(0).eulerAngles);
             var rotation = Quaternion.LookRotation(Vector3.forward, newPos);
             // To avoid close collisions, we add the 
             var fired = Instantiate(bullet, _firePoint.transform.position + newPos.normalized * 0.1f, rotation);
@@ -152,7 +152,8 @@ public class Enemy : MonoBehaviour
 
         if (_frozenTimer <= 0)
         {
-            this.transform.rotation = Quaternion.Slerp(this.transform.rotation, Quaternion.LookRotation(Vector3.forward, playerDir), rotateSpeed * Time.fixedDeltaTime);
+            this.transform.rotation = Quaternion.Euler(0, 0, 0);
+            this.transform.GetChild(0).rotation = Quaternion.Slerp(this.transform.GetChild(0).rotation, Quaternion.LookRotation(Vector3.forward, playerDir), rotateSpeed * Time.fixedDeltaTime);
         }
 
         if (_fireTimer > 0)
