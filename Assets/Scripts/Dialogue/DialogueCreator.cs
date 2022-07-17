@@ -184,7 +184,7 @@ public class DialogueCreator : DialogueViewBase
             roller.EnableRolling((diceList) => {
                 var sum = 0;
                 foreach (var die in diceList) {
-                    sum += die.Roll();
+                    sum += die.attachedDragAndDrop.face;
                 }
                 var attr = UnityEngine.Random.Range(0, diceList.Count);
                 var attrToUse = diceList[attr].attribute;

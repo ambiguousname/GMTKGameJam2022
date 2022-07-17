@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class DiceDragAndDrop : MonoBehaviour, IDragHandler, IEndDragHandler
 {
@@ -23,6 +24,9 @@ public class DiceDragAndDrop : MonoBehaviour, IDragHandler, IEndDragHandler
     private bool _firstMove = false;
 
     public bool canBeDragged = true;
+
+    [HideInInspector]
+    public int face = -1;
 
     private int _index = -1;
 
@@ -73,7 +77,8 @@ public class DiceDragAndDrop : MonoBehaviour, IDragHandler, IEndDragHandler
         this.transform.GetChild(1).gameObject.SetActive(true);
         this.transform.GetChild(0).gameObject.SetActive(true);
         this.transform.GetChild(0).GetComponent<Animator>().Play("LandVFX");
-
+        face = attachedDie.Roll();
+        this.transform.GetChild(1).GetComponent<Image>().sprite = Resources.Load<Sprite>("Dice Assets/" + (attachedDie.attribute != "" ? attachedDie.attribute : "white") + "_Die_" + face);
     }
 
     public void LandEnd() {
