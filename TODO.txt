@@ -6,6 +6,7 @@
 - Lose screen
 - Settings(?)
 - Fix bug where dice attributes can be rolled for wrong skill challenges (treat as normal?)
+- Add die to inventory if you ever run out
 - Inventory button(?)
 - HP
 - Reloading
