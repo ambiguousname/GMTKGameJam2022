@@ -8,7 +8,7 @@ public class LoadoutController : MonoBehaviour
     public List<Weapon> stats;
     private int _activeWeapon;
     private int _activeIndex;
-    private string _activeAttr;
+    public string activeAttr;
     public void ShowLoadout() {
         FindObjectOfType<CombatUIManager>().Show(false);
         FindObjectOfType<PlayerController>().moveEnabled = false;
@@ -44,7 +44,7 @@ public class LoadoutController : MonoBehaviour
     public void Reload() {
         // Result is 1-6 (We want 0-5):
         _activeWeapon = loadout[_activeIndex].Roll() - 1;
-        _activeAttr = loadout[_activeIndex].attribute;
+        activeAttr = loadout[_activeIndex].attribute;
         stats[_activeWeapon].Equip();
 
         _activeIndex++;

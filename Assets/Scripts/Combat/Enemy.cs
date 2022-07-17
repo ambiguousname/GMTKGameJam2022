@@ -29,6 +29,9 @@ public class Enemy : MonoBehaviour
     private GameObject _player;
     private Rigidbody2D _rigidbody;
     private float _fireTimer = 0.0f;
+    private float _frozenTimer = 0.0f;
+    private float _onFireTimer = 0.0f;
+    private int _onFireTimes = 0;
 
     private IAstarAI _ai;
 
@@ -83,6 +86,16 @@ public class Enemy : MonoBehaviour
         if (collision.tag == "PlayerBullet") {
             health -= collision.GetComponent<Bullet>().damage;
             Debug.Log(collision.name.Contains("GiantLaser") + " " + collision.name);
+            if (collision.GetComponent<Bullet>().attribute == "fire") {
+                _onFireTimer = 1;
+                _onFireTimes = 3;
+                _frozenTimer = 0;
+            }
+            if (collision.GetComponent<Bullet>().attribute == "ice") {
+                _frozenTimer = 1;
+                _onFireTimer = 0;
+                _onFireTimes = 0;
+            }
             if (!collision.name.Contains("GiantLaser"))
             {
                 Destroy(collision.gameObject);
@@ -119,7 +132,7 @@ public class Enemy : MonoBehaviour
         var hit = Physics2D.Raycast(this.transform.position, playerDir);
         if (hit.transform.tag == "Player")
         {
-            if (_fireTimer <= 0 && Vector3.Dot(this.transform.up, _player.transform.position) > 0)
+            if (_frozenTimer <= 0 && _fireTimer <= 0 && Vector3.Dot(this.transform.up, _player.transform.position) > 0)
             {
                 _fireTimer = fireDelay;
                 EvaluateSpread();
@@ -134,6 +147,33 @@ public class Enemy : MonoBehaviour
 
         var distFromPlayer = -(playerDir.normalized * minDistFromPlayer) + _player.transform.position;
 
-        _ai.destination = distFromPlayer;
+        if (_onFireTimer > 0) {
+            GetComponent<SpriteRenderer>().color = Color.red;
+            _onFireTimer -= Time.fixedDeltaTime;
+            if (_onFireTimer <= 0) {
+                if (_onFireTimes > 0)
+                {
+                    _onFireTimes -= 1;
+                    _onFireTimer = 1;
+                    health -= 10;
+                    StartCoroutine(HitPause());
+                }
+                else {
+                    GetComponent<SpriteRenderer>().color = Color.white;
+                }
+            }
+        }
+
+        if (_frozenTimer > 0)
+        {
+            GetComponent<SpriteRenderer>().color = Color.blue;
+            _ai.destination = this.transform.position;
+            _frozenTimer -= Time.fixedDeltaTime;
+        }
+        else
+        {
+            GetComponent<SpriteRenderer>().color = Color.white;
+            _ai.destination = distFromPlayer;
+        }
     }
 }

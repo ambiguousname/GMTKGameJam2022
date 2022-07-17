@@ -108,6 +108,7 @@ public class PlayerController : MonoBehaviour
             var fired = Instantiate(bullet, _firePoint.transform.position, rotation);
             fired.GetComponent<Bullet>().damage = damage;
             fired.GetComponent<Bullet>().range = range;
+            fired.GetComponent<Bullet>().attribute = FindObjectOfType<LoadoutController>().activeAttr;
 
             var rb = fired.GetComponent<Rigidbody2D>();
             rb.drag = bulletDrag;
