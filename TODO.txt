@@ -2,15 +2,17 @@
 - Make recoil much more apparent (move the gun back first, then the player?)
 - Tie player movement into update? (Or accelerate). Slows down during combat.
 - Add art
-- Main Menu
 - Pause Menu
 - Lose screen
-- Credits
 - Settings(?)
 - Fix bug where dice attributes can be rolled for wrong skill challenges (treat as normal?)
 - Inventory button(?)
 - HP
 - Reloading
+- Environmental damage
+- Sounds
+- Dice rolling anims
+- Menu in and out anims
 - Add helper text
 
 Dice Names:

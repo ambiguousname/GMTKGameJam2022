@@ -17,6 +17,13 @@ public class AmmoDisplay : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ammoText.text = "AMMO: " + player.ammo;
+        if (player.ammo == 0)
+        {
+            ammoText.text = "RELOADING...";
+        }
+        else
+        {
+            ammoText.text = "AMMO: " + player.ammo;
+        }
     }
 }

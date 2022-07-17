@@ -48,7 +48,7 @@ Shady Feller: [style italics=true color="c7c7c7"]*Ahem*.[/style] [style color="c
     You get a trick die! It only rolls fives or sixes!
     <<SetDie "TrickDie">>
 ===
-title: Old Captain
+title: OldCaptain
 ---
 Old Captain: [style color="99009A"]A-ha there, my fellow.[/style]
 Old Captain: [style color="99009A"]These seas be rougher than the barnacles on me back-side. But, I be a land lubber from eer on out. Nasty termites in me leg.[/style]

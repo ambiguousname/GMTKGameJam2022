@@ -41,8 +41,12 @@ public class LoadoutController : MonoBehaviour
         // In case there are fewer than 6 dice:
         int startIndex = _activeIndex;
         while (loadout[_activeIndex].faces == null) {
-            if (startIndex == _activeIndex) {
-                Debug.Log("Error: No dice found.");
+            if (startIndex == _activeIndex && loadout[_activeIndex].faces == null) {
+                if (loadout[_activeIndex - 1].faces != null) {
+                    _activeIndex--;
+                    break;
+                }
+                Debug.LogError("Error: No dice found.");
                 return;
             }
             _activeIndex++;

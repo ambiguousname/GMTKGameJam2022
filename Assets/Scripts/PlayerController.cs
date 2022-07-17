@@ -40,6 +40,7 @@ public class PlayerController : MonoBehaviour
 
     private bool _intendsToFire = false;
     private float _fireTimer = 0.0f;
+    private bool _isReloading = false;
 
     [Header("Damage")]
     public float health = 100;
@@ -135,15 +136,24 @@ public class PlayerController : MonoBehaviour
         Time.timeScale = 1;
     }
 
+    IEnumerator Reload() {
+        _isReloading = true;
+        Debug.LogError("?");
+        yield return new WaitForSeconds(1);
+        Debug.LogError("H");
+        _isReloading = false;
+        FindObjectOfType<LoadoutController>().Reload();
+    }
+
     private void AttemptToFireWeapon() {
-        if (fireEnabled && _intendsToFire && _fireTimer <= 0.0f) {
+        if (fireEnabled && _intendsToFire && _fireTimer <= 0.0f && ammo > 0) {
             //placeholder ammo code just to show off UI
             ammo--;
 
+            Debug.Log(ammo);
             if (ammo == 0)
             {
-                print("Reloading!");
-                ammo = maxAmmo;
+                StartCoroutine(Reload());
             }
 
             _fireTimer = fireDelay;
@@ -196,6 +206,16 @@ public class PlayerController : MonoBehaviour
             _intendsToFire = (value.Get<float>() >= 0.5f) ? true : false;
         }
         onFire.Invoke();
+    }
+
+    public void OnReload(InputValue value) {
+        if (value.Get<float>() >= 0.5f) {
+            if (fireEnabled && !_isReloading)
+            {
+                ammo = 0;
+                StartCoroutine(Reload());
+            }
+        }
     }
 
     #endregion
