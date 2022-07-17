@@ -1,6 +1,7 @@
 ﻿title: Start
 tags:
 ---
+<<declare $meetDavvy = false as bool>>
 The Right Honorable Good Captain: [style color="ff8000"] Ahoy there, good sire! Ye might call me the Right Honorable Good Captain of these faire aisles melass.[/style]
 The Right Honorable Good Captain: [style color="ff8000"] What's that ye scallywag? Ah, an enchanted sea witch hath stolen yon voice? [/style]
 The Right Honorable Good Captain: [style color="ff8000"] Prithee listen, I understand yer per-dic-a-ment. I were cursed by great wizerd to alternate speaking styles. [/style]

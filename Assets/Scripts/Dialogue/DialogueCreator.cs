@@ -100,20 +100,28 @@ public class DialogueCreator : DialogueViewBase
         {
             if (attribute.Name == "style")
             {
+                var toInsertBegin = "";
+                var toInsertEnd = "";
+                var beginOffset = 0;
+                var endOffset = 0;
                 if (attribute.Properties.ContainsKey("color"))
                 {
                     var colorTag = "<color=#" + attribute.Properties["color"].StringValue + ">";
-                    toAdd = toAdd.Insert(attribute.Position + offset, colorTag);
-                    offset += colorTag.Length;
-                    toAdd = toAdd.Insert(attribute.Position + attribute.Length + offset, "</color>");
-                    offset += "</color>".Length;
+                    toInsertBegin += colorTag;
+                    beginOffset += colorTag.Length;
+
+                    toInsertEnd += "</color>";
+                    endOffset += "</color>".Length;
                 }
                 if (attribute.Properties.ContainsKey("italics")) {
-                    toAdd = toAdd.Insert(attribute.Position + offset, "<i>");
-                    offset += 3;
-                    toAdd = toAdd.Insert(attribute.Position + attribute.Length + offset, "</i>");
-                    offset += 4;
+                    toInsertBegin += "<i>";
+                    beginOffset += 3;
+                    toInsertEnd += "</i>";
+                    endOffset += 4;
                 }
+                toAdd = toAdd.Insert(attribute.Position, toInsertBegin);
+                toAdd = toAdd.Insert(attribute.Position + attribute.Length + beginOffset, toInsertEnd);
+                offset += beginOffset + endOffset;
             }
             if (attribute.Name == "range")
             {
