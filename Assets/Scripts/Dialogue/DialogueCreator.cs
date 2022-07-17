@@ -82,6 +82,11 @@ public class DialogueCreator : DialogueViewBase
                 return;
             }
         }
+
+        // Go for blank if there's no alternative:
+        if (attribute != "") {
+            ChooseOptions(roll, "");
+        }
         _choices.Clear();
         Debug.LogError("No valid choices found for a roll of " + roll + " with Attribute: " + attribute + ".");
     }
