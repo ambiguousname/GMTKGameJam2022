@@ -21,6 +21,8 @@ public class DiceDragAndDrop : MonoBehaviour, IDragHandler, IEndDragHandler
 
     private bool _firstMove = false;
 
+    private int _index = -1;
+
     private void Awake()
     {
         dragTransform = transform as RectTransform;
@@ -70,7 +72,11 @@ public class DiceDragAndDrop : MonoBehaviour, IDragHandler, IEndDragHandler
                 _isBeingRolled = true;
                 if (containedSlot != null)
                 {
+                    if (_index != -1) {
+                        FindObjectOfType<RollerManager>().RemoveDiceFromRoll(attachedDie, _index);
+                    }
                     FindObjectOfType<RollerManager>().AddDieToRoll(attachedDie, containedSlot.slot);
+                    _index = containedSlot.slot;
                 }
                 else
                 {
@@ -79,6 +85,7 @@ public class DiceDragAndDrop : MonoBehaviour, IDragHandler, IEndDragHandler
             }
         }
         else {
+            _index = -1;
             dragTransform.position = startingPos;
             if (_isBeingRolled) {
                 _isBeingRolled = false;

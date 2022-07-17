@@ -162,6 +162,10 @@ public class RollerManager : MonoBehaviour
         _diceToRoll.Remove(die);
     }
 
+    public void RemoveDiceFromRoll(Dice die, int index) {
+        _diceToRoll[index] = new Dice();
+    }
+
     public void Roll() {
         if (_diceToRoll.Count > 0)
         {
