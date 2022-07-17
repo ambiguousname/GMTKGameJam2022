@@ -127,6 +127,7 @@ public class PlayerController : MonoBehaviour
             rb.AddForce(unbiased.normalized * fireForce);
             _rigidbody.AddForce(-unbiased.normalized * recoil);
         }
+        FindObjectOfType<Shake>().shake = 0.03f;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
