@@ -82,6 +82,20 @@ public class PlayerController : MonoBehaviour
             _rigidbody.velocity = Vector2.zero;
         }
     }
+    float SignedAngleBetween(Vector3 a, Vector3 b, Vector3 n)
+    {
+        // angle in [0,180]
+        float angle = Vector3.Angle(a, b);
+        float sign = Mathf.Sign(Vector3.Dot(n, Vector3.Cross(a, b)));
+
+        // angle in [-179,180]
+        float signed_angle = angle * sign;
+
+        // angle in [0,360] (not used but included here for completeness)
+        //float angle360 =  (signed_angle + 180) % 360;
+
+        return signed_angle;
+    }
 
     void EvaluateSpread()
     {
@@ -102,7 +116,9 @@ public class PlayerController : MonoBehaviour
             //rb.velocity = _rigidbody.velocity;
             //rb.angularVelocity = _rigidbody.angularVelocity;
             // So it's not based on how far away the mouse is:
-            var unbiased = new Vector3(newPos.x, newPos.y);
+            var angle = SignedAngleBetween(child.localPosition, Vector3.zero, Vector3.forward);
+            angle -= (3 * Mathf.PI/2) + Mathf.Deg2Rad * (_weapon.transform.eulerAngles.z);
+            var unbiased = new Vector3(Mathf.Cos(angle), Mathf.Sin(angle));
             rb.AddForce(unbiased.normalized * fireForce);
             _rigidbody.AddForce(-unbiased.normalized * recoil);
         }
@@ -176,7 +192,7 @@ public class PlayerController : MonoBehaviour
 
         Vector3 weaponDir = mousePos - _weapon.transform.position;
         Quaternion weaponLookDir = Quaternion.LookRotation(Vector3.forward, weaponDir);
-        _weapon.transform.rotation = weaponLookDir;
+        _weapon.transform.LookAt(mousePos, Vector3.forward);
     }
 
     #endregion

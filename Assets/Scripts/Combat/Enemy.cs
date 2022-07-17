@@ -82,6 +82,7 @@ public class Enemy : MonoBehaviour
     {
         if (collision.tag == "PlayerBullet") {
             health -= collision.GetComponent<Bullet>().damage;
+            Debug.Log(collision.name.Contains("GiantLaser") + " " + collision.name);
             if (!collision.name.Contains("GiantLaser"))
             {
                 Destroy(collision.gameObject);
@@ -91,7 +92,7 @@ public class Enemy : MonoBehaviour
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.name == "GiantLaser") {
+        if (collision.name.Contains("GiantLaser")) {
             health -= collision.GetComponent<Bullet>().damage;
             StartCoroutine(HitPause());
         }
