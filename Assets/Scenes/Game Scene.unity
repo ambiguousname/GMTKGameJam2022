@@ -44285,6 +44285,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7212433565241096421, guid: 5ed9494ad90deed4584b54ca7e9813f4, type: 3}
+      propertyPath: m_DefaultBlend.m_Style
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7565480745760355716, guid: 5ed9494ad90deed4584b54ca7e9813f4, type: 3}
       propertyPath: inventory.Array.size
       value: 2
@@ -123589,11 +123593,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6699560113093243711, guid: 4c6c9e9ede1335847a5f47c913a2a681, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 87
+      value: -9.8
       objectReference: {fileID: 0}
     - target: {fileID: 6699560113093243711, guid: 4c6c9e9ede1335847a5f47c913a2a681, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.2
+      value: -0.1
       objectReference: {fileID: 0}
     - target: {fileID: 6699560113093243711, guid: 4c6c9e9ede1335847a5f47c913a2a681, type: 3}
       propertyPath: m_LocalPosition.z
