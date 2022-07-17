@@ -55,6 +55,9 @@ public class PlayerController : MonoBehaviour
     private Sprite _defaultSprite;
     private Color _defaultTint;
 
+    [Header("Animation")]
+    public SpriteAnimator animator;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -68,6 +71,8 @@ public class PlayerController : MonoBehaviour
         _defaultTint = GetComponent<SpriteRenderer>().color;
         _giantLaser = Instantiate(giantLaser, _firePoint.transform);
         _giantLaser.SetActive(false);
+
+        animator.playAnimation(animator.idle, .4f);
     }
 
     #region PhysicsUpdates
@@ -79,7 +84,7 @@ public class PlayerController : MonoBehaviour
             _rigidbody.AddForce(_accelIntent * acceleration);
             Vector2 screenPos = Mouse.current.position.ReadValue();
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(new Vector3(screenPos.x, screenPos.y, this.transform.position.y));
-            UpdateRotations(mousePos);
+            ManageAnimations(mousePos);
             AttemptToFireWeapon();
         }
         else {
@@ -204,10 +209,35 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void UpdateRotations(Vector3 mousePos) {
+    private void ManageAnimations(Vector3 mousePos) {
+        /*
         Vector3 dir = mousePos - this.transform.position;
         Quaternion lookDir = Quaternion.LookRotation(Vector3.forward, dir);
         this.transform.rotation = Quaternion.Slerp(this.transform.rotation, lookDir, bodyLookSpeed * Time.fixedDeltaTime);
+        */
+        if(_accelIntent.x > 0)
+        {
+            transform.localScale = new Vector3(1, 1, 1);
+            animator.playAnimation(animator.runRight, .4f);
+        } else if(_accelIntent.x < 0)
+        {
+            transform.localScale = new Vector3(-1, 1, 1);
+            animator.playAnimation(animator.runRight, .4f);
+        } else if(_accelIntent.y > 0)
+        {
+            transform.localScale = new Vector3(1, 1, 1);
+            animator.playAnimation(animator.runUp, .4f);
+        }
+         else if(_accelIntent.y < 0)
+        {
+            transform.localScale = new Vector3(1, 1, 1);
+            animator.playAnimation(animator.runDown, .4f);
+        } else
+        {
+            animator.playAnimation(animator.idle, .4f);
+        }
+
+
 
         Vector3 weaponDir = mousePos - _weapon.transform.position;
         Quaternion weaponLookDir = Quaternion.LookRotation(Vector3.forward, weaponDir);

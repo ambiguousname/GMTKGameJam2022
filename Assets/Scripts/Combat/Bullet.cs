@@ -8,15 +8,19 @@ public class Bullet : MonoBehaviour
     public float range = 0;
     public bool isLaser = false;
     public string attribute = "";
+    public SpriteAnimator animator;
     private Vector3 _startDist;
 
     private void Start()
     {
         _startDist = this.transform.position;
+        animator.playAnimation(animator.idle, .4f);
     }
 
     private void Update()
     {
+        animator.playAnimation(animator.idle, .5f);
+
         if (attribute == "fire") {
             GetComponent<SpriteRenderer>().color = Color.red;
         }

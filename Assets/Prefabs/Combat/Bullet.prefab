@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -6231700373019456659}
   - component: {fileID: -8924541795188067750}
   - component: {fileID: -4276041592183750336}
+  - component: {fileID: 9109152216531969274}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: PlayerBullet
@@ -73,9 +74,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1248915991
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
+  m_Sprite: {fileID: -7307313871145038689, guid: 7dada09ddc0fdf544b30ee3d23be9010, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -149,3 +150,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 0
   range: 0
+  isLaser: 0
+  attribute: 
+  animator: {fileID: 9109152216531969274}
+--- !u!114 &9109152216531969274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1785892531762391867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 056d3a023c6f70d439dd0c46c02fd8dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  runRight: []
+  runUp: []
+  runDown: []
+  idle:
+  - {fileID: -6620135359832647879, guid: 7dada09ddc0fdf544b30ee3d23be9010, type: 3}
+  - {fileID: 6943586918733023834, guid: 7dada09ddc0fdf544b30ee3d23be9010, type: 3}
+  - {fileID: -7307313871145038689, guid: 7dada09ddc0fdf544b30ee3d23be9010, type: 3}
+  spriteRenderer: {fileID: 1785892531762391864}
