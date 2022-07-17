@@ -72,6 +72,7 @@ public class PlayerController : MonoBehaviour
         _defaultSprite = GetComponent<SpriteRenderer>().sprite;
         _defaultTint = GetComponent<SpriteRenderer>().color;
         _giantLaser = Instantiate(giantLaser, _firePoint.transform);
+        _giantLaser.GetComponent<Bullet>().animator = GetComponent<SpriteAnimator>();
         _giantLaser.SetActive(false);
 
         animator.playAnimation(animator.idle, .4f);
