@@ -6,6 +6,7 @@ public class Bullet : MonoBehaviour
 {
     public float damage = 0;
     public float range = 0;
+    public bool isLaser = false;
     private Vector3 _startDist;
 
     private void Start()
@@ -15,7 +16,7 @@ public class Bullet : MonoBehaviour
 
     private void Update()
     {
-        if (Vector3.Distance(_startDist, this.transform.position) > range) {
+        if (!isLaser && Vector3.Distance(_startDist, this.transform.position) > range) {
             Destroy(this.gameObject);
         }
     }
