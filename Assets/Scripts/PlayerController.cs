@@ -11,6 +11,9 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]
     public UnityEvent onFire;
 
+    public AudioSource playerHit_sfx;
+    public AudioSource playerFire_sfx;
+
     [Header("Movement")]
     public float acceleration = 10.0f;
     // Player is slow to look, but the gun turns fast (it's the real source of bullets anyways)
@@ -129,6 +132,7 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.tag == "Bullet") {
             health -= collision.GetComponent<Bullet>().damage;
+            playerHit_sfx.Play();
             Destroy(collision.gameObject);
             StartCoroutine(HitPause());
         }
@@ -154,7 +158,9 @@ public class PlayerController : MonoBehaviour
 
     private void AttemptToFireWeapon() {
         if (fireEnabled && _intendsToFire && _fireTimer <= 0.0f && ammo > 0) {
-            //placeholder ammo code just to show off UI
+
+            playerFire_sfx.Play();
+
             ammo--;
 
             if (ammo == 0)
