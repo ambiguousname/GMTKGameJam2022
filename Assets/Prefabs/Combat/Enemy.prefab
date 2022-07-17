@@ -49,6 +49,7 @@ GameObject:
   - component: {fileID: 5532910219674783467}
   - component: {fileID: 1171457131441902940}
   - component: {fileID: 1156448151875442096}
+  - component: {fileID: 7351878039019916136}
   m_Layer: 2
   m_Name: Enemy
   m_TagString: Untagged
@@ -111,8 +112,8 @@ SpriteRenderer:
   m_SortingLayerID: -1198435121
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2135585597343286014, guid: eed45a33cd08446c8b88325cf82fc52f, type: 3}
-  m_Color: {r: 1, g: 0.85638046, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: a3551eaf83a448e4abf48afd3f95149b, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -139,7 +140,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.8828125, y: 1}
+    oldSize: {x: 6, y: 6}
     newSize: {x: 0.8828125, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -176,6 +177,7 @@ MonoBehaviour:
   rotateSpeed: 3
   minDistFromPlayer: 5
   range: 500
+  animator: {fileID: 7351878039019916136}
 --- !u!50 &8353787989225013452
 Rigidbody2D:
   serializedVersion: 4
@@ -577,3 +579,29 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &7351878039019916136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8353787989225013443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 056d3a023c6f70d439dd0c46c02fd8dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  runRight:
+  - {fileID: 9135975484799118364, guid: 58a731f8f6e2d3049a7f1c841e359c87, type: 3}
+  - {fileID: 729726151873373514, guid: 58a731f8f6e2d3049a7f1c841e359c87, type: 3}
+  - {fileID: -5493469717907994191, guid: 58a731f8f6e2d3049a7f1c841e359c87, type: 3}
+  - {fileID: -3951578792888063517, guid: 58a731f8f6e2d3049a7f1c841e359c87, type: 3}
+  - {fileID: -4477115221495299167, guid: 58a731f8f6e2d3049a7f1c841e359c87, type: 3}
+  - {fileID: 5033396752106711205, guid: 58a731f8f6e2d3049a7f1c841e359c87, type: 3}
+  - {fileID: 1905873781829149801, guid: 58a731f8f6e2d3049a7f1c841e359c87, type: 3}
+  - {fileID: -7608232995213800162, guid: 58a731f8f6e2d3049a7f1c841e359c87, type: 3}
+  runUp: []
+  runDown: []
+  idle:
+  - {fileID: 21300000, guid: a3551eaf83a448e4abf48afd3f95149b, type: 3}
+  spriteRenderer: {fileID: 8353787989225013440}
