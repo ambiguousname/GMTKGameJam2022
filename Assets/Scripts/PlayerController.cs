@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -135,6 +136,11 @@ public class PlayerController : MonoBehaviour
             playerHit_sfx.Play();
             Destroy(collision.gameObject);
             StartCoroutine(HitPause());
+
+            if (health <= 0)
+            {
+                GameOver();
+            }
         }
     }
     IEnumerator HitPause() {
@@ -154,6 +160,11 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(1);
         _isReloading = false;
         FindObjectOfType<LoadoutController>().Reload();
+    }
+
+    private void GameOver()
+    {
+        SceneManager.LoadScene(3);
     }
 
     private void AttemptToFireWeapon() {
