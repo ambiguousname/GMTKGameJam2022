@@ -215,3 +215,11 @@ The Last Interactor: [style color="D40010"]FEW HAVE SURVIVED THE PERIL I PRESENT
     <<SetDie "BasicIce">>
     <<SetDie "BasicIce">>
 ===
+title: Win
+---
+You win! The curse is lifted!
+Or the pirates or whatever! I mean...
+The Right Honorable Good Captain: [style color="ff8000"] Ye did it my good man! Now acquiesce yon treasure and we'll be rich! Arrr! [/style]
+The Right Honorable Good Captain: [style color="ff8000"] Let's bounce! [/style]
+Thanks for playing!
+===
