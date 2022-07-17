@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LoadoutController : MonoBehaviour
 {
@@ -45,6 +46,7 @@ public class LoadoutController : MonoBehaviour
         // Result is 1-6 (We want 0-5):
         _activeWeapon = loadout[_activeIndex].Roll() - 1;
         activeAttr = loadout[_activeIndex].attribute;
+        FindObjectOfType<CombatUIManager>().transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<Image>().sprite = Resources.Load<Sprite>("DiceAssets/" + loadout[_activeIndex].attachedSprite + "_Die_" + _activeWeapon);
         stats[_activeWeapon].Equip();
 
         _activeIndex++;
