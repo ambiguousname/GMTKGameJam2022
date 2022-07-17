@@ -96,7 +96,6 @@ public class DialogueCreator : DialogueViewBase
         this.transform.GetChild(0).gameObject.SetActive(true);
         this.transform.GetChild(0).GetChild(4).gameObject.SetActive(!requiredDialogue);
         _player.moveEnabled = false;
-        FindObjectOfType<CombatUIManager>().Show(false);
     }
 
     string EvaluateAttributes(List<Yarn.Markup.MarkupAttribute> attributes, string toAdd) {
@@ -276,7 +275,6 @@ public class DialogueCreator : DialogueViewBase
         FindObjectOfType<RollerManager>().EndRolling();
         this.transform.GetChild(0).gameObject.SetActive(false);
         _player.moveEnabled = true;
-        FindObjectOfType<CombatUIManager>().Show(true);
     }
 
     public void ForceStop() {
