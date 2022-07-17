@@ -22,7 +22,7 @@ public class CombatController : MonoBehaviour
                 _wave = waves[_index];
                 _wave.SetActive(true);
             }
-            else
+            else if (_index >= waves.Count - 1)
             {
                 inCombat = false;
                 _wave = null;

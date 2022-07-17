@@ -11,11 +11,10 @@ public class CombatTrigger : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            FindObjectOfType<CombatController>().inCombat = false;
-
             FindObjectOfType<CombatController>().teleportTo = teleportTo;
             if (!_triggered)
             {
+                FindObjectOfType<CombatController>().inCombat = false;
                 FindObjectOfType<CombatController>().waves = waves;
                 _triggered = true;
                 FindObjectOfType<LoadoutController>().ShowLoadout();

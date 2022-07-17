@@ -136,6 +136,7 @@ public class Enemy : MonoBehaviour
     {
         var playerDir = _player.transform.position - this.transform.position;
         var hit = Physics2D.Raycast(this.transform.position, playerDir);
+        Debug.DrawLine(this.transform.position, hit.point);
         if (hit.transform.tag == "Player")
         {
             if (_frozenTimer <= 0 && _fireTimer <= 0 && Vector3.Dot(this.transform.up, _player.transform.position) > 0)
