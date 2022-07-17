@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour
     public AudioSource playerHit_sfx;
     public AudioSource playerFire_sfx;
 
+    public Texture2D cursor;
+
     [Header("Movement")]
     public float acceleration = 10.0f;
     // Player is slow to look, but the gun turns fast (it's the real source of bullets anyways)
@@ -73,6 +75,8 @@ public class PlayerController : MonoBehaviour
         _giantLaser.SetActive(false);
 
         animator.playAnimation(animator.idle, .4f);
+
+        Cursor.SetCursor(cursor, new Vector2(0.5f, 0.5f), CursorMode.Auto);
     }
 
     #region PhysicsUpdates
@@ -89,6 +93,7 @@ public class PlayerController : MonoBehaviour
         }
         else {
             _rigidbody.velocity = Vector2.zero;
+            GetComponent<SpriteAnimator>().playAnimation(GetComponent<SpriteAnimator>().idle, 1);
         }
     }
     float SignedAngleBetween(Vector3 a, Vector3 b, Vector3 n)
