@@ -1,9 +1,5 @@
-- Make recoil much more apparent (move the gun back first, then the player?)
-- Tie player movement into update? (Or accelerate). Slows down during combat.
 - Add art
 - Pause Menu
-- Settings(?)
-- Inventory button(?)
 - HP
 - Sounds
 - Dice rolling anims
